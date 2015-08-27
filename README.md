@@ -120,3 +120,5 @@ $('body').on('click', '#foo', function () {
 });
 ```
 
+#### Utilities, Data Manipulation, Ajax, etc.
+Between lodash & jQuery, you should be fine.
