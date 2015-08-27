@@ -259,26 +259,29 @@ $(<span class="pl-s"><span class="pl-pds">'</span>body<span class="pl-pds">'</sp
 </template>
 
 <template data-pathname="github">
-    <div class="col-sm-6 col-sm-offset-3">
-        <h2>Remote Data Example</h2>
-        <hr>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <h2>Remote Data Example</h2>
+            <hr>
 
-        <h4>Latest Activity for kidgodzilla/framework</h4>
+            <h4>Latest Activity for kidgodzilla/framework</h4>
 
-        <% if (App.data.githubData) { %>
-        <div>
-            <% for (var index in App.data.githubData) { %>
-            <div width="100%">
-                <div style="width:100px;display:inline-block"><% App.data.githubData[index].actor.login %></div>
-                <div style="width:200px;display:inline-block"><% App.data.githubData[index].created_at %></div>
-                <div style="display:inline-block"><% App.data.githubData[index].type %></div>
+            <% if (App.data.githubData) { %>
+            <div>
+                <% for (var index in App.data.githubData) { %>
+                <div width="100%">
+                    <div style="width:100px;display:inline-block"><% App.data.githubData[index].actor.login %></div>
+                    <div style="width:200px;display:inline-block"><% App.data.githubData[index].created_at %></div>
+                    <div style="display:inline-block"><% App.data.githubData[index].type %></div>
+                </div>
+                <% } %>
             </div>
             <% } %>
-        </div>
-        <% } %>
 
-        <br><hr>
+            <br><hr>
+        </div>
     </div>
+
 </template>
 
 <script src="js/core.js"></script>
