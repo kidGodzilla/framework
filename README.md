@@ -129,7 +129,7 @@ Alternatively, if you are coming from AngularJS & enjoy it's declarative syntax,
 <a onclick="App.addNewItem()">Add New Item</a>
 <input id="input2" type="text" onkeyup="App.handleBoundData('#input2')">
 ```
-See http://www.w3schools.com/jsref/dom_obj_event.asp for a more complete list of DOM events.
+See http://www.w3schools.com/jsref/dom_obj_event.asp for a longer list of DOM events.
 
 #### Utilities, Data Manipulation, Ajax, etc.
 Between lodash & jQuery, you should be fine.
