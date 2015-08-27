@@ -28,7 +28,7 @@
 
 ## Approximate Size
 **Core Object:** 160 loc
- **Data Binding:** 20 loc
- **Utils:** 32 loc
- **Router:** 112 loc
- **Template Engine:** 50 loc
+<br>**Data Binding:** 20 loc
+<br>**Utils:** 32 loc
+<br>**Router:** 112 loc
+<br>**Template Engine:** 50 loc
