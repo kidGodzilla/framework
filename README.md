@@ -1,8 +1,13 @@
 # "Framework"
 
-Some totally unrelated things that might let you get away with not using a more complicated framework.
+Some totally unrelated things that might let you get away with not using a more complicated framework. I wrote it in about a day.
 
-It's an MV* framework. I wrote it in about a day.
+## About
+When the big frameworks were shiny and new, they brought massive amounts of power to the Javascript language. Seeing a front-end template rendered, and then re-rendered and manipulated in real time, seemed like some kind of black magic, as did data binding, routing, and any of the other techniques used to build real applications in Javascript.
+
+However, their popularity has completely transformed the Javascript language, and today many of the big ideas that made applications possible in Javascript have been reduced from giant libraries to native functions, often with greater simplicity & refinement. While we owe a great deal to those who pioneered these techniques in some of the major frameworks (still popular today), replicating some of their most powerful features has become a much simplier task.
+
+To demonstrate this, I created a very small (~300 loc) "framework" called **Framework**. Ideally, you might learn something from it, or use it to gain insight into where the javascript language (and frameworks!) could move once new features like `Object.observe` are implemented. Thanks for looking!
 
 ## Demo
 
