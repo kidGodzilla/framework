@@ -12,10 +12,40 @@
 <body>
 
 <div class="container">
-    <h1>"Framework" Example Application</h1>
-    <hr>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">"Framework" Example Application</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#dataBindingExample">Data Binding</a></li>
+                    <li><a href="#gravatar">Gravatar</a></li>
+                    <li><a href="#github">Remote Data</a></li>
+                    <li><a href="#template">Advanced Template</a></li>
+                    <li><a href="#foo/bar/baz">Nested Route</a></li>
+                    <li><a href="#foo">Foo</a></li>
+                    <li><a href="#bar">Bar</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://github.com/kidGodzilla/framework"><i class="fa fa-github"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <div id="outlet"></div>
+
+    <hr style="margin-top: 250px">
+
+    <h2>Readme</h2>
 
     <p>Some totally unrelated things that might let you get away with not using a more complicated framework.</p>
 
@@ -173,91 +203,82 @@ $(<span class="pl-s"><span class="pl-pds">'</span>body<span class="pl-pds">'</sp
 
 
 <template data-pathname="index">
-    <a class="btn btn-primary" href='#foo'>Foo</a>
-    <a class="btn btn-primary" href='#bar'>Bar</a>
-    <a class="btn btn-primary" href='#dataBindingExample'>Data Binding Example</a>
-    <a class="btn btn-primary" href='#foo/bar/baz'>Nested Route Example</a>
-    <a class="btn btn-primary" href='#template'>Advanced Template Example</a>
-    <a class="btn btn-primary" href='#gravatar'>Gravatar Example</a>
-    <a class="btn btn-primary" href='#github'>Remote Data Example</a>
-
-
-    <hr>
-
+    <div class="text-center">
+        <br><br><br>
+        <h1>"Framework" Example Application Demo</h1>
+        <a class="" href="#dataBindingExample">Data Binding Example</a> |
+        <a class="" href="#gravatar">Gravatar Example</a>    |
+        <a class="" href="#github">Remote Data Example</a> |
+        <a class="" href="#template">Advanced Template Example</a>   |
+        <a class="" href="#foo/bar/baz">Nested Route Example</a>
+    </div>
 </template>
 
 <template data-pathname="foo">
-    <a class="btn btn-primary" href='#'>Home</a>
-
-    <h2>Foo!~</h2>
+    <h2 class="text-center">Foo!~</h2>
 </template>
 
 <template data-pathname="bar">
-    <a class="btn btn-primary" href='#'>Home</a>
-
-    <h2>Bar!</h2>
+    <h2 class="text-center">Bar!</h2>
 </template>
 
 <template data-pathname="dataBindingExample">
-    <a class="btn btn-primary" href='#'>Home</a>
-
-    <h2>Data Binding Example</h2>
-    <input type="text" id="input2" onkeyup="App.updateBoundData()" placeholder="Start typing here..">
-    <h3 id="foo"></h3>
+    <div class="text-center">
+        <h2>Data Binding Example</h2>
+        <input type="text" id="input2" onkeyup="App.updateBoundData()" placeholder="Start typing here..">
+        <h3 id="foo"></h3>
+    </div>
 </template>
 
 <template data-pathname="foo/bar/baz">
-    <a class="btn btn-primary" href='#'>Home</a>
-
-    <h2>/foo/bar/baz!!1</h2>
+    <h2 class="text-center">/foo/bar/baz!!1</h2>
 </template>
 
 <template data-pathname="template">
-    <a class="btn btn-primary" href='#'>Home</a>
+    <div class="col-sm-6 col-sm-offset-3">
+        <h2><% App.data.templatePageTitle %></h2>
 
-    <h2><% App.data.templatePageTitle %></h2>
-
-    <ul>
-        <% for (var index in App.data.items) { %>
-        <li><% App.data.items[index] %></li>
-        <% } %>
-    </ul>
+        <ul>
+            <% for (var index in App.data.items) { %>
+            <li><% App.data.items[index] %></li>
+            <% } %>
+        </ul>
+    </div>
 </template>
 
 <template data-pathname="gravatar">
-    <a class="btn btn-primary" href='#'>Home</a>
+    <div class="text-center">
+        <h2>Gravatar Example</h2>
+        <hr>
 
-    <h2>Gravatar Example</h2>
-    <hr>
-
-    <input type="text" id="input3" onkeyup="App.updateGravatar()" placeholder="Enter your email here..">
-    <br><br>
-    <img id="gravatar" alt="">
-    <br><hr>
+        <input type="text" id="input3" onkeyup="App.updateGravatar()" placeholder="Enter your email here..">
+        <br><br>
+        <img id="gravatar" alt="">
+        <br><hr>
+    </div>
 </template>
 
 <template data-pathname="github">
-    <a class="btn btn-primary" href='#'>Home</a>
+    <div class="col-sm-6 col-sm-offset-3">
+        <h2>Remote Data Example</h2>
+        <hr>
 
-    <h2>Remote Data Example</h2>
-    <hr>
+        <h4>Latest Activity for kidgodzilla/framework</h4>
 
-    <h4>Latest Activity for kidgodzilla/framework</h4>
-
-    <% if (App.data.githubData) { %>
+        <% if (App.data.githubData) { %>
         <div>
             <% for (var index in App.data.githubData) { %>
-                <div width="100%">
-                    <div style="width:100px;display:inline-block"><% App.data.githubData[index].actor.login %></div>
-                    <div style="width:200px;display:inline-block"><% App.data.githubData[index].created_at %></div>
-                    <div style="display:inline-block"><% App.data.githubData[index].type %></div>
-                </div>
+            <div width="100%">
+                <div style="width:100px;display:inline-block"><% App.data.githubData[index].actor.login %></div>
+                <div style="width:200px;display:inline-block"><% App.data.githubData[index].created_at %></div>
+                <div style="display:inline-block"><% App.data.githubData[index].type %></div>
+            </div>
             <% } %>
         </div>
-    <% } %>
+        <% } %>
 
-
-    <br><hr>
+        <br><hr>
+    </div>
 </template>
 
 <script src="js/core.js"></script>
