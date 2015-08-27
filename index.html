@@ -4,29 +4,57 @@
     <meta charset="UTF-8">
     <title>Test</title>
     <style>
+        body {
+            padding-top: 50px;
+        }
     </style>
 </head>
 <body>
 
+<div class="container">
+    <h1>"Framework" Application</h1>
+    <hr>
+
+    <div id="outlet"></div>
+</div>
+
+
 <template data-pathname="index">
-    <div class="container">
-        <a class="btn btn-primary" href='#foo'>Foo</a>
-        <a class="btn btn-primary" href='#bar'>Bar</a>
-    </div>
+    <a class="btn btn-primary" href='#foo'>Foo</a>
+    <a class="btn btn-primary" href='#bar'>Bar</a>
+    <a class="btn btn-primary" href='#dataBindingExample'>Data Binding Example</a>
+
+    <h2>This is Homepage!~</h2>
 </template>
 
 <template data-pathname="foo">
-    <div class="container">
-        <a class="btn btn-primary" href='#'>Home</a>
-    </div>
+    <a class="btn btn-primary" href='#'>Home</a>
+
+    <h2>Foo!~</h2>
 </template>
 
 <template data-pathname="bar">
-    <div class="container">
-        <a class="btn btn-primary" href='#'>Home</a>
-    </div>
+    <a class="btn btn-primary" href='#'>Home</a>
+
+    <h2>Bar!</h2>
 </template>
 
+<template data-pathname="dataBindingExample">
+    <a class="btn btn-primary" href='#'>Home</a>
+
+    <h2>Data Binding Example</h2>
+    <input type="text" id="input2" onkeyup="App.updateBoundData()" placeholder="Start typing here..">
+    <h3 id="foo"></h3>
+</template>
+
+<script src="js/core.js"></script>
 <script src="js/loader.js"></script>
+<script>
+    Loader.loadScript('js/utils.js');
+    Loader.loadScript('js/router.js');
+    Loader.loadScript('js/templating.js');
+    Loader.loadScript('js/binding.js');
+    Loader.loadScript('js/app.js');
+</script>
 </body>
 </html>

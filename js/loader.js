@@ -2,6 +2,8 @@
  * LOAD-DEPENDENCIES.JS
  * A A naive dependency loader which loads scripts & stylesheets on page load.
  */
+var Loader = new Core();
+
 (function () {
 
     /**
@@ -51,6 +53,11 @@
         link.media = 'all';
         head.appendChild(link);
     }
+
+    Loader.registerGlobal('protocol', protocol);
+    Loader.registerGlobal('loadScript', loadScript);
+    Loader.registerGlobal('loadStylesheet', loadStylesheet);
+    Loader.registerGlobal('loadScriptAsync', loadScriptAsync);
 
     /**
      * User-extendable dependency loader
@@ -219,20 +226,6 @@
          */
         //loadStylesheet(protocol + "cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.4/united/bootstrap.min.css");
         //loadScriptAsync(protocol + "cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js");
-
-
-        /**
-         * Our Dependencies
-         */
-        loadScript('js/core.js'); // Core Object Library
-        loadScript('js/binding.js'); // Data binding
-        loadScript('js/utils.js'); // Utilities
-        loadScript('js/router.js'); // Router
-        loadScript('js/templating.js'); // Templating
-        loadScript('js/app.js'); // Our Application
-
-
-
 
 
 
