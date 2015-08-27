@@ -44,13 +44,46 @@ Take a close look at `loader.js`. This provides you a few simple hooks to load d
 Templating.js includes a feature-complete template engine, & any templates in your document will automatically become routes & views. Simply use the following syntax:
 
 ```html
-<template data-pathname="your/full/pathname">
+<template data-pathname="index">
   <h2>Your content here</h2>
+</template>
+```
+* You should specify, at minimum, an index template.
+
+#### More Advanced Templating
+
+```html
+<template data-pathname="index">
+  <% if (App.data.pageTitle) { %>
+    <h2><% App.data.pageTitle %></h2>
+  <% } %>
+  
+  <ul>
+  <% for (var index in items) { %>
+    <% items[index] %>
+  <% } %>
+  </ul>
 </template>
 ```
 
 #### Linking to Routes
+Anything with an `href` attribute will be observed using event delegation. If you link to a hash, it will be handled automatically.
+
+```html
+<template data-pathname="index">
+  <a href="#foo">foo</a>
+  <h3>Index</h3>
+</template>
+
+<template data-pathname="foo">
+  <a href="#">Go Home</a>
+  <h3>foo!</h3>
+</template>
+```
 
 #### Programmatic Route Transitions
+Need to hook into a route transition from within your app? No problem! Simply call:
 
-
+```javascript
+App.routeTo(<route-name>);
+```
