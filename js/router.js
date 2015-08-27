@@ -27,7 +27,7 @@ var Router = new Core();
 
 
     /**
-     * Route to
+     * Route to a Named Route
      */
     Router.registerGlobal('routeTo', function (path, preserveState) {
 

@@ -46,10 +46,12 @@ var Template = new Core();
         Router.registerRoute(name, {
             loadRoute: function () {
                 var thisTemplate = App.templates[name];
-                $('body').html(thisTemplate);
+                var $outlet = $('#outlet').length ? $('#outlet').first() : $('body');
+                $outlet.html(thisTemplate);
             },
             unloadRoute: function () {
-                $('body').html('');
+                var $outlet = $('#outlet').length ? $('#outlet').first() : $('body');
+                $outlet.html('');
             }
         });
     });
