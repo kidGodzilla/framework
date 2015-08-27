@@ -65,4 +65,11 @@ var Utils = new Core();
         return this.returnDeepest(obj[properties[0]], properties.slice(1));
     });
 
+    /**
+     * Unescape HTML Entities
+     */
+    Utils.registerGlobal('htmlDecode', function (input) {
+        return $('<div/>').html(input).text();
+    });
+
 })();
