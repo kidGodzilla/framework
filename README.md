@@ -51,6 +51,7 @@ Templating.js includes a feature-complete template engine, & any templates in yo
 * You should specify, at minimum, an index template.
 
 #### More Advanced Templating
+Syntax for most things (conditionals, loops) tracks very closely to backbone.js & javascript.
 
 ```html
 <template data-pathname="index">
@@ -87,3 +88,35 @@ Need to hook into a route transition from within your app? No problem! Simply ca
 ```javascript
 App.routeTo(<route-name>);
 ```
+
+#### Data Modeling
+Getter and Setter methods are provided as `App.get()` and `App.set()` for very basic data management. See an example:
+
+```javascript
+var name = prompt('what is your name?');
+App.set('name', name);
+
+// Later
+alert('I remember your name! It's ' + App.get('name'));
+```
+
+#### Data Binding
+"Framework" implements a wrapper around `Object.observe()` to facilitate one-way data binding in modern browsers. If your browser doesn't support this, you might need a <a href="https://github.com/MaxArt2501/object-observe" target="_new">polyfill</a>.
+
+```javascript
+// Logs to the console whenever App.data.previousRouteUnloadFunction is changed
+App.bind('previousRouteUnloadFunction', function (newValue) {
+    console.log(newValue);
+});
+```
+
+#### Event Delegation
+Just use jQuery (1.6+)! It offers very nice syntax for event delegation:
+
+```javascript
+// Log to the console when #foo is clicked
+$('body').on('click', '#foo', function () {
+  console.log('#foo was clicked!');
+});
+```
+
