@@ -120,5 +120,14 @@ $('body').on('click', '#foo', function () {
 });
 ```
 
+Alternatively, if you are coming from AngluarJS & enjoy it's declarative syntax, you could try javascript's built-in, declarative event-binding syntax:
+
+```html
+<a onclick="App.goBack()">Go Back</a>
+<a onclick="App.addNewItem()">Add New Item</a>
+<input id="input2" type="text" onkeyup="App.handleBoundData('#input2')">
+```
+See http://www.w3schools.com/jsref/dom_obj_event.asp for a more complete list of DOM events.
+
 #### Utilities, Data Manipulation, Ajax, etc.
 Between lodash & jQuery, you should be fine.
