@@ -178,6 +178,8 @@ $(<span class="pl-s"><span class="pl-pds">'</span>body<span class="pl-pds">'</sp
     <a class="btn btn-primary" href='#dataBindingExample'>Data Binding Example</a>
     <a class="btn btn-primary" href='#foo/bar/baz'>Nested Route Example</a>
     <a class="btn btn-primary" href='#template'>Advanced Template Example</a>
+    <a class="btn btn-primary" href='#gravatar'>Gravatar Example</a>
+    <a class="btn btn-primary" href='#github'>Remote Data Example</a>
 
 
     <hr>
@@ -217,15 +219,77 @@ $(<span class="pl-s"><span class="pl-pds">'</span>body<span class="pl-pds">'</sp
 
     <ul>
         <% for (var index in App.data.items) { %>
-            <li><% App.data.items[index] %></li>
+        <li><% App.data.items[index] %></li>
         <% } %>
     </ul>
+</template>
+
+<template data-pathname="gravatar">
+    <a class="btn btn-primary" href='#'>Home</a>
+
+    <h2>Gravatar Example</h2>
+    <hr>
+
+    <input type="text" id="input3" onkeyup="App.updateGravatar()" placeholder="Enter your email here..">
+    <br><br>
+    <img id="gravatar" alt="">
+    <br><hr>
+</template>
+
+<template data-pathname="github">
+    <a class="btn btn-primary" href='#'>Home</a>
+
+    <h2>Remote Data Example</h2>
+    <hr>
+
+    <h4>Latest Activity for kidgodzilla/framework</h4>
+
+    <% if (App.data.githubData) { %>
+    <table style="width:50%">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Timestamp</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><% App.data.githubData[0].actor.login %></td>
+            <td><% App.data.githubData[0].created_at %></td>
+            <td><% App.data.githubData[0].type %></td>
+        </tr>
+        <tr>
+            <td><% App.data.githubData[1].actor.login %></td>
+            <td><% App.data.githubData[1].created_at %></td>
+            <td><% App.data.githubData[1].type %></td>
+        </tr>
+        <tr>
+            <td><% App.data.githubData[2].actor.login %></td>
+            <td><% App.data.githubData[2].created_at %></td>
+            <td><% App.data.githubData[2].type %></td>
+        </tr>
+        <tr>
+            <td><% App.data.githubData[3].actor.login %></td>
+            <td><% App.data.githubData[3].created_at %></td>
+            <td><% App.data.githubData[3].type %></td>
+        </tr>
+        <tr>
+            <td><% App.data.githubData[4].actor.login %></td>
+            <td><% App.data.githubData[4].created_at %></td>
+            <td><% App.data.githubData[4].type %></td>
+        </tr>
+        </tbody>
+    </table>
+    <% } %>
+    <br><hr>
 </template>
 
 <script src="js/core.js"></script>
 <script src="js/loader.js"></script>
 <script>
     Loader.loadScript('js/object.observe.min.js');
+    Loader.loadScript('js/md5.js');
     Loader.loadScript('js/utils.js');
     Loader.loadScript('js/router.js');
     Loader.loadScript('js/template.js');
