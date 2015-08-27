@@ -21,7 +21,7 @@ var Router = new Core();
         routeParts = routeParts.filter(function (n) { return n != undefined && n !== "" });
 
         // Create an object path to routeParts
-        return this.deepSetValue('Router.routes', routeParts, options);
+        return Utils.deepSetValue('Router.routes', routeParts, options);
     });
 
 
@@ -44,17 +44,17 @@ var Router = new Core();
         // Filter out the good parts
         routeParts = routeParts.filter(function (n) { return n != undefined && n !== "" });
 
-        var deepest = this.returnDeepest(this.routes, routeParts);
+        var deepest = Utils.returnDeepest(this.routes, routeParts);
 
         var loadRoute = deepest.loadRoute || null;
         var unloadRoute = deepest.unloadRoute || null;
         var params = deepest.params || null;
 
-        var previousRouteUnloadFunction = App.get('previousRouteUnloadFunction');
+        var previousRouteUnloadFunction = Router.get('previousRouteUnloadFunction');
 
         if (previousRouteUnloadFunction && typeof(previousRouteUnloadFunction === "function")) previousRouteUnloadFunction();
         if (loadRoute && typeof(loadRoute === "function")) loadRoute(params);
-        App.set('previousRouteUnloadFunction', unloadRoute);
+        Router.set('previousRouteUnloadFunction', unloadRoute);
     });
 
 
@@ -76,7 +76,7 @@ var Router = new Core();
     Router.registerGlobal('routeToCurrentHash', function (preserveState) {
         var currentRoute = window.location.hash;
         if (currentRoute.indexOf('#') === 0) currentRoute = currentRoute.slice(1);
-        App.routeTo(currentRoute, preserveState);
+        Router.routeTo(currentRoute, preserveState);
     });
 
 
