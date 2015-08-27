@@ -34,3 +34,23 @@ It's an MV* framework. I wrote it in about a day.
 <br>**Utils:** 32 loc
 <br>**Router:** 112 loc
 <br>**Template Engine:** 50 loc
+
+## Usage
+
+#### Importing Dependencies
+Take a close look at `loader.js`. This provides you a few simple hooks to load dependencies, either locally or from a CDN.
+
+#### Creating Templates
+Templating.js includes a feature-complete template engine, & any templates in your document will automatically become routes & views. Simply use the following syntax:
+
+```html
+<template data-pathname="your/full/pathname">
+  <h2>Your content here</h2>
+</template>
+```
+
+#### Linking to Routes
+
+#### Programmatic Route Transitions
+
+
