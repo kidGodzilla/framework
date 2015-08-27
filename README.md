@@ -120,7 +120,7 @@ $('body').on('click', '#foo', function () {
 });
 ```
 
-Alternatively, if you are coming from AngluarJS & enjoy it's declarative syntax, you could try javascript's built-in, declarative event-binding syntax:
+Alternatively, if you are coming from AngularJS & enjoy it's declarative syntax, you could try javascript's built-in, declarative event-binding syntax:
 
 ```html
 <a onclick="App.goBack()">Go Back</a>
