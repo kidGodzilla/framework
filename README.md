@@ -7,9 +7,11 @@ It's an MV* framework. I wrote it in about a day.
 - App.data `{}`
 - Getters & Setters
 - One-way data binding
+
 #### Views
 - Templating
 - Routing
+
 #### Controllers
 - Obsolete much?
 
