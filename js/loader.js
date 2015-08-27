@@ -120,7 +120,7 @@ var Loader = new Core();
          * Font-Awesome
          * A very useful icon pack
          */
-        //loadStylesheet(protocol + "cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css");
+        loadStylesheet(protocol + "cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css");
 
 
 
