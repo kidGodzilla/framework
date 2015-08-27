@@ -23,6 +23,7 @@
     <a class="btn btn-primary" href='#foo'>Foo</a>
     <a class="btn btn-primary" href='#bar'>Bar</a>
     <a class="btn btn-primary" href='#dataBindingExample'>Data Binding Example</a>
+    <a class="btn btn-primary" href='#foo/bar/baz'>Nested Route Example</a>
 
     <h2>This is Homepage!~</h2>
 </template>
@@ -45,6 +46,12 @@
     <h2>Data Binding Example</h2>
     <input type="text" id="input2" onkeyup="App.updateBoundData()" placeholder="Start typing here..">
     <h3 id="foo"></h3>
+</template>
+
+<template data-pathname="foo/bar/baz">
+    <a class="btn btn-primary" href='#'>Home</a>
+
+    <h2>/foo/bar/baz!</h2>
 </template>
 
 <script src="js/core.js"></script>
