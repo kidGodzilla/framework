@@ -1,6 +1,6 @@
 # "Framework"
 
-Some totally unrelated things that might let you get away with not using a more complicated framework. I wrote it in about a day.
+Some totally unrelated things that might let you get away with not using a more complicated framework. I wrote it in about a day. More of a demo than a production tool.
 
 ## About
 When the big frameworks were shiny and new, they brought massive amounts of power to the Javascript language. Seeing a front-end template rendered, and then re-rendered and manipulated in real time, seemed like some kind of black magic, as did data binding, routing, and any of the other techniques used to build real applications in Javascript.
