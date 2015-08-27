@@ -51,7 +51,7 @@ Templating.js includes a feature-complete template engine, & any templates in yo
 * You should specify, at minimum, an index template.
 
 #### More Advanced Templating
-Syntax for most things (conditionals, loops) tracks very closely to backbone.js & javascript.
+Syntax for most things (conditionals, loops) tracks very closely to underscore.js & lodash.
 
 ```html
 <template data-pathname="index">
