@@ -12,13 +12,13 @@
 - Obsolete much?
 
 ## Features
-### Template engine
+#### Template engine
 - String Interpolation with javascript objects
 - For loops
 - Switch statements
 - Conditionals
 
-### Router
+#### Router
 - Automatically registers templates -> routes
 - Loads the correct route from URL
 - Handles forward / backward state changes
