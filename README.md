@@ -17,14 +17,13 @@
 - For loops
 - Switch statements
 - Conditionals
-<br>
+
 ### Router
 - Automatically registers templates -> routes
 - Loads the correct route from URL
 - Handles forward / backward state changes
 - Intercepts [href] click events (through delegation) & routes them
 - Automatically passes URL parameters (additional, unused route segments) to routing function
-
 
 
 ## Approximate Size
