@@ -17,6 +17,7 @@
 - For loops
 - Switch statements
 - Conditionals
+<br>
 ### Router
 - Automatically registers templates -> routes
 - Loads the correct route from URL
