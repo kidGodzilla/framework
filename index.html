@@ -23,6 +23,8 @@
     <a class="btn btn-primary" href='#foo'>Foo</a>
     <a class="btn btn-primary" href='#bar'>Bar</a>
     <a class="btn btn-primary" href='#dataBindingExample'>Data Binding Example</a>
+    <a class="btn btn-primary" href='#foo/bar/baz'>Nested Route Example</a>
+    <a class="btn btn-primary" href='#template'>Advanced Template Example</a>
 
     <h2>This is Homepage!~</h2>
 </template>
@@ -47,12 +49,30 @@
     <h3 id="foo"></h3>
 </template>
 
+<template data-pathname="foo/bar/baz">
+    <a class="btn btn-primary" href='#'>Home</a>
+
+    <h2>/foo/bar/baz!!1</h2>
+</template>
+
+<template data-pathname="template">
+    <a class="btn btn-primary" href='#'>Home</a>
+
+    <h2><% App.data.templatePageTitle %></h2>
+
+    <ul>
+        <% for (var index in App.data.items) { %>
+            <li><% App.data.items[index] %></li>
+        <% } %>
+    </ul>
+</template>
+
 <script src="js/core.js"></script>
 <script src="js/loader.js"></script>
 <script>
     Loader.loadScript('js/utils.js');
     Loader.loadScript('js/router.js');
-    Loader.loadScript('js/templating.js');
+    Loader.loadScript('js/template.js');
     Loader.loadScript('js/binding.js');
     Loader.loadScript('js/app.js');
 </script>

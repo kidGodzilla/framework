@@ -4,6 +4,10 @@ Some totally unrelated things that might let you get away with not using a more 
 
 It's an MV* framework. I wrote it in about a day.
 
+## Demo
+
+http://kidgodzilla.github.io/framework/
+
 ## "MV*"
 #### Model
 - App.data `{}`
