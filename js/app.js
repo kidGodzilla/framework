@@ -19,4 +19,16 @@ var App = new Core();
         b: "bar",
         c: "baz"
     });
+
+    App.registerGlobal('updateGravatar', function() {
+        var email = $('#input3').val();
+
+        var gravatar = 'http://www.gravatar.com/avatar/' + md5(email) + '?s=200';
+        $('#gravatar').attr('src', gravatar);
+    });
+
+    $.get('https://api.github.com/repos/kidGodzilla/framework/events', function (data) {
+        App.set('githubData', data);
+        // console.log(data); // data[1].actor.login, data[1].type, data[1].created_at
+    });
 })();

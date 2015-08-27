@@ -12,10 +12,163 @@
 <body>
 
 <div class="container">
-    <h1>"Framework" Application</h1>
+    <h1>"Framework" Example Application</h1>
     <hr>
 
     <div id="outlet"></div>
+
+    <p>Some totally unrelated things that might let you get away with not using a more complicated framework.</p>
+
+    <p>It's an MV* framework. I wrote it in about a day.</p>
+
+    <div class="well">
+        <article class="markdown-body entry-content" itemprop="mainContentOfPage">
+
+            <h4><a id="user-content-model" class="anchor" href="#model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Model</h4>
+
+            <ul>
+                <li>App.data <code>{}</code></li>
+                <li>Getters &amp; Setters</li>
+                <li>One-way data binding</li>
+            </ul>
+
+            <h4><a id="user-content-views" class="anchor" href="#views" aria-hidden="true"><span class="octicon octicon-link"></span></a>Views</h4>
+
+            <ul>
+                <li>Templating</li>
+                <li>Routing</li>
+            </ul>
+
+            <h4><a id="user-content-controllers" class="anchor" href="#controllers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Controllers</h4>
+
+            <ul>
+                <li>Obsolete much?</li>
+            </ul>
+
+            <h2><a id="user-content-features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+
+            <h4><a id="user-content-template-engine" class="anchor" href="#template-engine" aria-hidden="true"><span class="octicon octicon-link"></span></a>Template engine</h4>
+
+            <ul>
+                <li>String Interpolation with javascript objects</li>
+                <li>For loops</li>
+                <li>Switch statements</li>
+                <li>Conditionals</li>
+            </ul>
+
+            <h4><a id="user-content-router" class="anchor" href="#router" aria-hidden="true"><span class="octicon octicon-link"></span></a>Router</h4>
+
+            <ul>
+                <li>Automatically registers templates -&gt; routes</li>
+                <li>Loads the correct route from URL</li>
+                <li>Handles forward / backward state changes</li>
+                <li>Intercepts [href] click events (through delegation) &amp; routes them</li>
+                <li>Automatically passes URL parameters (additional, unused route segments) to routing function</li>
+            </ul>
+
+            <h2><a id="user-content-approximate-size" class="anchor" href="#approximate-size" aria-hidden="true"><span class="octicon octicon-link"></span></a>Approximate Size</h2>
+
+            <p><strong>Core Object:</strong> 160 loc
+                <br><strong>Data Binding:</strong> 20 loc
+                <br><strong>Utils:</strong> 32 loc
+                <br><strong>Router:</strong> 112 loc
+                <br><strong>Template Engine:</strong> 50 loc</p>
+
+            <h2><a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+            <h4><a id="user-content-importing-dependencies" class="anchor" href="#importing-dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Importing Dependencies</h4>
+
+            <p>Take a close look at <code>loader.js</code>. This provides you a few simple hooks to load dependencies, either locally or from a CDN.</p>
+
+            <h4><a id="user-content-creating-templates" class="anchor" href="#creating-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating Templates</h4>
+
+            <p>Templating.js includes a feature-complete template engine, &amp; any templates in your document will automatically become routes &amp; views. Simply use the following syntax:</p>
+
+            <div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">template</span> <span class="pl-e">data-pathname</span>=<span class="pl-s"><span class="pl-pds">"</span>index<span class="pl-pds">"</span></span>&gt;
+  &lt;<span class="pl-ent">h2</span>&gt;Your content here&lt;/<span class="pl-ent">h2</span>&gt;
+&lt;/<span class="pl-ent">template</span>&gt;</pre></div>
+
+            <ul>
+                <li>You should specify, at minimum, an index template.</li>
+            </ul>
+
+            <h4><a id="user-content-more-advanced-templating" class="anchor" href="#more-advanced-templating" aria-hidden="true"><span class="octicon octicon-link"></span></a>More Advanced Templating</h4>
+
+            <p>Syntax for most things (conditionals, loops) tracks very closely to underscore.js &amp; lodash.</p>
+
+            <div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">template</span> <span class="pl-e">data-pathname</span>=<span class="pl-s"><span class="pl-pds">"</span>index<span class="pl-pds">"</span></span>&gt;
+  &lt;% if (App.data.pageTitle) { %&gt;
+    &lt;<span class="pl-ent">h2</span>&gt;&lt;% App.data.pageTitle %&gt;&lt;/<span class="pl-ent">h2</span>&gt;
+  &lt;% } %&gt;
+
+  &lt;<span class="pl-ent">ul</span>&gt;
+  &lt;% for (var index in items) { %&gt;
+    &lt;% items[index] %&gt;
+  &lt;% } %&gt;
+  &lt;/<span class="pl-ent">ul</span>&gt;
+&lt;/<span class="pl-ent">template</span>&gt;</pre></div>
+
+            <h4><a id="user-content-linking-to-routes" class="anchor" href="#linking-to-routes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Linking to Routes</h4>
+
+            <p>Anything with an <code>href</code> attribute will be observed using event delegation. If you link to a hash, it will be handled automatically.</p>
+
+            <div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">template</span> <span class="pl-e">data-pathname</span>=<span class="pl-s"><span class="pl-pds">"</span>index<span class="pl-pds">"</span></span>&gt;
+  &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>#foo<span class="pl-pds">"</span></span>&gt;foo&lt;/<span class="pl-ent">a</span>&gt;
+  &lt;<span class="pl-ent">h3</span>&gt;Index&lt;/<span class="pl-ent">h3</span>&gt;
+&lt;/<span class="pl-ent">template</span>&gt;
+
+&lt;<span class="pl-ent">template</span> <span class="pl-e">data-pathname</span>=<span class="pl-s"><span class="pl-pds">"</span>foo<span class="pl-pds">"</span></span>&gt;
+  &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>#<span class="pl-pds">"</span></span>&gt;Go Home&lt;/<span class="pl-ent">a</span>&gt;
+  &lt;<span class="pl-ent">h3</span>&gt;foo!&lt;/<span class="pl-ent">h3</span>&gt;
+&lt;/<span class="pl-ent">template</span>&gt;</pre></div>
+
+            <h4><a id="user-content-programmatic-route-transitions" class="anchor" href="#programmatic-route-transitions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Programmatic Route Transitions</h4>
+
+            <p>Need to hook into a route transition from within your app? No problem! Simply call:</p>
+
+            <div class="highlight highlight-javascript"><pre>Router.<span class="pl-c1">routeTo</span>(<span class="pl-k">&lt;</span>route<span class="pl-k">-</span>name<span class="pl-k">&gt;</span>);</pre></div>
+
+            <h4><a id="user-content-data-modeling" class="anchor" href="#data-modeling" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Modeling</h4>
+
+            <p>Getter and Setter methods are provided as <code>App.get()</code> and <code>App.set()</code> for very basic data management. See an example:</p>
+
+            <div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> name <span class="pl-k">=</span> <span class="pl-c1">prompt</span>(<span class="pl-s"><span class="pl-pds">'</span>what is your name?<span class="pl-pds">'</span></span>);
+App.<span class="pl-c1">set</span>(<span class="pl-s"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span>, name);
+
+<span class="pl-c">// Later</span>
+<span class="pl-c1">alert</span>(<span class="pl-s"><span class="pl-pds">'</span>I remember your name! It<span class="pl-pds">'</span></span>s <span class="pl-s"><span class="pl-pds">'</span> + App.get(<span class="pl-pds">'</span></span>name<span class="pl-s"><span class="pl-pds">'</span>));</span></pre></div>
+
+            <h4><a id="user-content-data-binding" class="anchor" href="#data-binding" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Binding</h4>
+
+            <p>"Framework" implements a wrapper around <code>Object.observe()</code> to facilitate one-way data binding in modern browsers. If your browser doesn't support this, you might need a <a href="https://github.com/MaxArt2501/object-observe" target="_new">polyfill</a>.</p>
+
+            <div class="highlight highlight-javascript"><pre><span class="pl-c">// Logs to the console whenever Binding.data.previousRouteUnloadFunction is changed</span>
+Binding.<span class="pl-c1">bind</span>(<span class="pl-s"><span class="pl-pds">'</span>previousRouteUnloadFunction<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">newValue</span>) {
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(newValue);
+});</pre></div>
+
+            <h4><a id="user-content-event-delegation" class="anchor" href="#event-delegation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Event Delegation</h4>
+
+            <p>Just use jQuery (1.6+)! It offers very nice syntax for event delegation:</p>
+
+            <div class="highlight highlight-javascript"><pre><span class="pl-c">// Log to the console when #foo is clicked</span>
+$(<span class="pl-s"><span class="pl-pds">'</span>body<span class="pl-pds">'</span></span>).<span class="pl-c1">on</span>(<span class="pl-s"><span class="pl-pds">'</span>click<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>#foo<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> () {
+  <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>#foo was clicked!<span class="pl-pds">'</span></span>);
+});</pre></div>
+
+            <p>Alternatively, if you are coming from AngularJS &amp; enjoy it's declarative syntax, you could try javascript's built-in, declarative event-binding syntax:</p>
+
+            <div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">a</span> <span class="pl-e">onclick</span>=<span class="pl-s"><span class="pl-pds">"</span>Router.goBack()<span class="pl-pds">"</span></span>&gt;Go Back&lt;/<span class="pl-ent">a</span>&gt;
+&lt;<span class="pl-ent">a</span> <span class="pl-e">onclick</span>=<span class="pl-s"><span class="pl-pds">"</span>App.addNewItem()<span class="pl-pds">"</span></span>&gt;Add New Item&lt;/<span class="pl-ent">a</span>&gt;
+&lt;<span class="pl-ent">input</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>input2<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span> <span class="pl-e">onkeyup</span>=<span class="pl-s"><span class="pl-pds">"</span>App.handleBoundData('#input2')<span class="pl-pds">"</span></span>&gt;</pre></div>
+
+            <p>See <a href="http://www.w3schools.com/jsref/dom_obj_event.asp">http://www.w3schools.com/jsref/dom_obj_event.asp</a> for a longer list of DOM events.</p>
+
+            <h4><a id="user-content-utilities-data-manipulation-ajax-etc" class="anchor" href="#utilities-data-manipulation-ajax-etc" aria-hidden="true"><span class="octicon octicon-link"></span></a>Utilities, Data Manipulation, Ajax, etc.</h4>
+
+            <p>Between lodash &amp; jQuery, you should be fine.</p>
+        </article>
+    </div>
 </div>
 
 
@@ -25,8 +178,12 @@
     <a class="btn btn-primary" href='#dataBindingExample'>Data Binding Example</a>
     <a class="btn btn-primary" href='#foo/bar/baz'>Nested Route Example</a>
     <a class="btn btn-primary" href='#template'>Advanced Template Example</a>
+    <a class="btn btn-primary" href='#gravatar'>Gravatar Example</a>
+    <a class="btn btn-primary" href='#github'>Remote Data Example</a>
 
-    <h2>This is Homepage!~</h2>
+
+    <hr>
+
 </template>
 
 <template data-pathname="foo">
@@ -62,14 +219,77 @@
 
     <ul>
         <% for (var index in App.data.items) { %>
-            <li><% App.data.items[index] %></li>
+        <li><% App.data.items[index] %></li>
         <% } %>
     </ul>
+</template>
+
+<template data-pathname="gravatar">
+    <a class="btn btn-primary" href='#'>Home</a>
+
+    <h2>Gravatar Example</h2>
+    <hr>
+
+    <input type="text" id="input3" onkeyup="App.updateGravatar()" placeholder="Enter your email here..">
+    <br><br>
+    <img id="gravatar" alt="">
+    <br><hr>
+</template>
+
+<template data-pathname="github">
+    <a class="btn btn-primary" href='#'>Home</a>
+
+    <h2>Remote Data Example</h2>
+    <hr>
+
+    <h4>Latest Activity for kidgodzilla/framework</h4>
+
+    <% if (App.data.githubData) { %>
+    <table style="width:50%">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Timestamp</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><% App.data.githubData[0].actor.login %></td>
+            <td><% App.data.githubData[0].created_at %></td>
+            <td><% App.data.githubData[0].type %></td>
+        </tr>
+        <tr>
+            <td><% App.data.githubData[1].actor.login %></td>
+            <td><% App.data.githubData[1].created_at %></td>
+            <td><% App.data.githubData[1].type %></td>
+        </tr>
+        <tr>
+            <td><% App.data.githubData[2].actor.login %></td>
+            <td><% App.data.githubData[2].created_at %></td>
+            <td><% App.data.githubData[2].type %></td>
+        </tr>
+        <tr>
+            <td><% App.data.githubData[3].actor.login %></td>
+            <td><% App.data.githubData[3].created_at %></td>
+            <td><% App.data.githubData[3].type %></td>
+        </tr>
+        <tr>
+            <td><% App.data.githubData[4].actor.login %></td>
+            <td><% App.data.githubData[4].created_at %></td>
+            <td><% App.data.githubData[4].type %></td>
+        </tr>
+        </tbody>
+    </table>
+    <% } %>
+    <br><hr>
 </template>
 
 <script src="js/core.js"></script>
 <script src="js/loader.js"></script>
 <script>
+    Loader.loadScript('js/object.observe.min.js');
+    Loader.loadScript('js/md5.js');
     Loader.loadScript('js/utils.js');
     Loader.loadScript('js/router.js');
     Loader.loadScript('js/template.js');
