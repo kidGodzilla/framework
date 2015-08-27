@@ -245,43 +245,18 @@ $(<span class="pl-s"><span class="pl-pds">'</span>body<span class="pl-pds">'</sp
     <h4>Latest Activity for kidgodzilla/framework</h4>
 
     <% if (App.data.githubData) { %>
-    <table style="width:50%">
-        <thead>
-            <tr>
-                <th>User</th>
-                <th>Timestamp</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><% App.data.githubData[0].actor.login %></td>
-            <td><% App.data.githubData[0].created_at %></td>
-            <td><% App.data.githubData[0].type %></td>
-        </tr>
-        <tr>
-            <td><% App.data.githubData[1].actor.login %></td>
-            <td><% App.data.githubData[1].created_at %></td>
-            <td><% App.data.githubData[1].type %></td>
-        </tr>
-        <tr>
-            <td><% App.data.githubData[2].actor.login %></td>
-            <td><% App.data.githubData[2].created_at %></td>
-            <td><% App.data.githubData[2].type %></td>
-        </tr>
-        <tr>
-            <td><% App.data.githubData[3].actor.login %></td>
-            <td><% App.data.githubData[3].created_at %></td>
-            <td><% App.data.githubData[3].type %></td>
-        </tr>
-        <tr>
-            <td><% App.data.githubData[4].actor.login %></td>
-            <td><% App.data.githubData[4].created_at %></td>
-            <td><% App.data.githubData[4].type %></td>
-        </tr>
-        </tbody>
-    </table>
+        <div>
+            <% for (var index in App.data.githubData) { %>
+                <div width="100%">
+                    <div style="width:100px;display:inline-block"><% App.data.githubData[index].actor.login %></div>
+                    <div style="width:200px;display:inline-block"><% App.data.githubData[index].created_at %></div>
+                    <div style="display:inline-block"><% App.data.githubData[index].type %></div>
+                </div>
+            <% } %>
+        </div>
     <% } %>
+
+
     <br><hr>
 </template>
 

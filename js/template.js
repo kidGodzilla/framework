@@ -6,7 +6,8 @@ var Template = new Core();
 (function () {
 
     function htmlDecode (value) {
-        return $('<div/>').html(value).html().replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+        //return $('<div/>').html(value).html().replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+        return value.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
     }
 
     Template.registerGlobal('templates', {});
@@ -17,6 +18,7 @@ var Template = new Core();
     Template.registerGlobal('compileTemplate', function (html, options) {
 
         html = htmlDecode(html);
+        console.log(html)
 
         var re = /<%([^%>]+)?%>/g;
         var reExp = /(^( )?(if|for|else|switch|case|break|{|}))(.*)?/g;
