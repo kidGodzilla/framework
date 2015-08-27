@@ -1,5 +1,7 @@
 # "Framework"
 
+Some totally unrelated things that might let you get away with not using a more complicated framework.
+
 It's an MV* framework. I wrote it in about a day.
 
 ## "MV*"
@@ -88,7 +90,7 @@ Anything with an `href` attribute will be observed using event delegation. If yo
 Need to hook into a route transition from within your app? No problem! Simply call:
 
 ```javascript
-App.routeTo(<route-name>);
+Router.routeTo(<route-name>);
 ```
 
 #### Data Modeling
@@ -106,8 +108,8 @@ alert('I remember your name! It's ' + App.get('name'));
 "Framework" implements a wrapper around `Object.observe()` to facilitate one-way data binding in modern browsers. If your browser doesn't support this, you might need a <a href="https://github.com/MaxArt2501/object-observe" target="_new">polyfill</a>.
 
 ```javascript
-// Logs to the console whenever App.data.previousRouteUnloadFunction is changed
-App.bind('previousRouteUnloadFunction', function (newValue) {
+// Logs to the console whenever Binding.data.previousRouteUnloadFunction is changed
+Binding.bind('previousRouteUnloadFunction', function (newValue) {
     console.log(newValue);
 });
 ```
@@ -125,7 +127,7 @@ $('body').on('click', '#foo', function () {
 Alternatively, if you are coming from AngularJS & enjoy it's declarative syntax, you could try javascript's built-in, declarative event-binding syntax:
 
 ```html
-<a onclick="App.goBack()">Go Back</a>
+<a onclick="Router.goBack()">Go Back</a>
 <a onclick="App.addNewItem()">Add New Item</a>
 <input id="input2" type="text" onkeyup="App.handleBoundData('#input2')">
 ```
