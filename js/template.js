@@ -6,9 +6,7 @@ var Template = new Core();
 (function () {
 
     function htmlDecode (value) {
-        var result = $('<div/>').html(value).html();
-        result = result.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
-        return result;
+        return $('<div/>').html(value).html().replace(/&lt;/g, '<').replace(/&gt;/g, '>');
     }
 
     Template.registerGlobal('templates', {});
@@ -19,7 +17,6 @@ var Template = new Core();
     Template.registerGlobal('compileTemplate', function (html, options) {
 
         html = htmlDecode(html);
-        console.log(html);
 
         var re = /<%([^%>]+)?%>/g;
         var reExp = /(^( )?(if|for|else|switch|case|break|{|}))(.*)?/g;
@@ -54,12 +51,8 @@ var Template = new Core();
 
         Router.registerRoute(name, {
             loadRoute: function () {
-                var thisTemplate = App.templates[name];
-                console.log(thisTemplate);
                 var $outlet = $('#outlet').length ? $('#outlet').first() : $('body');
-                var compiled = Template.compileTemplate(thisTemplate);
-                console.log(compiled);
-                $outlet.html(compiled);
+                $outlet.html(Template.compileTemplate(App.templates[name]));
             },
             unloadRoute: function () {
                 var $outlet = $('#outlet').length ? $('#outlet').first() : $('body');
