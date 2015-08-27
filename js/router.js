@@ -1,15 +1,17 @@
-/****************************************************
- * Router.js
- ***************************************************/
+/**
+ * A Javascript Router based on the HTML5 history API
+ */
+var Router = new Core();
+
 (function () {
 
-    App.registerGlobal('routes', {});
+    Router.registerGlobal('routes', {});
 
 
     /**
      * Register a Route
      */
-    App.registerGlobal('registerRoute', function (routeName, options) {
+    Router.registerGlobal('registerRoute', function (routeName, options) {
         var routeParts = routeName.split('/');
 
         // Early return if our routeName is FUBAR
@@ -19,7 +21,7 @@
         routeParts = routeParts.filter(function (n) { return n != undefined && n !== "" });
 
         // Create an object path to routeParts
-        return this.deepSetValue('App.routes', routeParts, options);
+        return this.deepSetValue('Router.routes', routeParts, options);
     });
 
 
@@ -27,7 +29,7 @@
     /**
      * Route to
      */
-    App.registerGlobal('routeTo', function (path, preserveState) {
+    Router.registerGlobal('routeTo', function (path, preserveState) {
 
         if (!preserveState) window.history.pushState({ pageTitle: document.title }, document.title, '#'+path);
 
@@ -59,19 +61,19 @@
     /**
      * Go Back
      */
-    App.registerGlobal('goBack', function () {
+    Router.registerGlobal('goBack', function () {
         window.history.back();
     });
 
     /**
      * Go Forward
      */
-    App.registerGlobal('goForward', function () {
+    Router.registerGlobal('goForward', function () {
         window.history.go(1);
     });
 
 
-    App.registerGlobal('routeToCurrentHash', function (preserveState) {
+    Router.registerGlobal('routeToCurrentHash', function (preserveState) {
         var currentRoute = window.location.hash;
         if (currentRoute.indexOf('#') === 0) currentRoute = currentRoute.slice(1);
         App.routeTo(currentRoute, preserveState);
@@ -92,7 +94,7 @@
 
                 event.preventDefault();
                 routeName = routeName.slice(1);
-                return App.routeTo(routeName);
+                return Router.routeTo(routeName);
             }
         });
 
@@ -105,12 +107,12 @@
                 // Reference: var routeName = event.originalEvent.state.routeName;
 
                 // Load the current route (from URL)
-                App.routeToCurrentHash(true);
+                Router.routeToCurrentHash(true);
             }
         });
 
         // Load the initial route (from URL)
-        App.routeToCurrentHash();
+        Router.routeToCurrentHash();
 
     });
 

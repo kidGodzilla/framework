@@ -1,3 +1,8 @@
+/**
+ * A centralized location for generic application utilities
+ */
+var Utils = new Core();
+
 (function () {
     /**
      * Safely return a deeply-nested object which may or may not exist at any depth
@@ -5,11 +10,11 @@
      *  An Example
      *
      * ```
-     * var foo = App.deepReturnSafely(window, ['foo', 'bar', 'baz', 'quack', 'moo']);
+     * var foo = Utils.deepReturnSafely(window, ['foo', 'bar', 'baz', 'quack', 'moo']);
      * if (foo) // Do things. Terrible things. But, more safely;
      * ```
      */
-    App.registerGlobal('deepReturnSafely', function (obj, properties, defaultReturnValue) {
+    Utils.registerGlobal('deepReturnSafely', function (obj, properties, defaultReturnValue) {
 
         // Early return if we cannot proceed
         if (obj === undefined || obj === null)
@@ -29,10 +34,10 @@
      *  An Example (sets window.foo.bar.baz.quack.moo = "cow", although none of these objects exist
      *
      * ```
-     * var foo = App.deepSetValue(window, ['foo', 'bar', 'baz', 'quack', 'moo'], "cow");
+     * var foo = Utils.deepSetValue(window, ['foo', 'bar', 'baz', 'quack', 'moo'], "cow");
      * ```
      */
-    App.registerGlobal('deepSetValue', function (objName, properties, value) {
+    Utils.registerGlobal('deepSetValue', function (objName, properties, value) {
 
         var str = objName;
 
@@ -50,7 +55,7 @@
     /**
      * Return deepest nested object property & return leftover properties as params
      */
-    App.registerGlobal('returnDeepest', function (obj, properties) {
+    Utils.registerGlobal('returnDeepest', function (obj, properties) {
 
         if (properties.length === 0 || !obj[properties[0]]) {
             if (properties.length > 0) obj.params = properties;

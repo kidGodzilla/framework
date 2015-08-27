@@ -1,14 +1,16 @@
 /**
  * Templating Micro-library
  */
+var Template = new Core();
+
 (function () {
 
-    App.registerGlobal('templates', {});
+    Template.registerGlobal('templates', {});
 
     /**
      * Concise template compilation
      */
-    App.registerGlobal('compileTemplate', function (html, options) {
+    Template.registerGlobal('compileTemplate', function (html, options) {
 
         var re = /<%([^%>]+)?%>/g;
         var reExp = /(^( )?(if|for|else|switch|case|break|{|}))(.*)?/g;
@@ -39,9 +41,9 @@
         var template = $(this).html();
         var name = $(this).attr('data-pathname');
 
-        App.templates[name] = template;
+        Template.templates[name] = template;
 
-        App.registerRoute(name, {
+        Router.registerRoute(name, {
             loadRoute: function () {
                 var thisTemplate = App.templates[name];
                 $('body').html(thisTemplate);

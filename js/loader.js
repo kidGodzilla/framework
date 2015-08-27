@@ -225,11 +225,11 @@
          * Our Dependencies
          */
         loadScript('js/core.js'); // Core Object Library
-        loadScript('js/init.js'); // Initializes an app at `App`
         loadScript('js/binding.js'); // Data binding
         loadScript('js/utils.js'); // Utilities
         loadScript('js/router.js'); // Router
         loadScript('js/templating.js'); // Templating
+        loadScript('js/app.js'); // Our Application
 
 
 

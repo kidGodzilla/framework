@@ -1,16 +1,18 @@
 /**
  * A simple library for data-binding based on Object.observe()
  */
+var Binding = new Core();
+
 (function () {
 
-    App.registerGlobal('bindings', {});
+    Binding.registerGlobal('bindings', {});
 
-    App.registerGlobal('bind', function (name, func) {
-        App.bindings[name] = func;
+    Binding.registerGlobal('bind', function (name, func) {
+        Binding.bindings[name] = func;
     });
 
     $(document).ready(function () {
-        Object.observe(App.data, function (changes) {
+        Object.observe(Binding.data, function (changes) {
             changes.forEach(function (change) {
                 var name = change.name;
                 var object = change.object;
