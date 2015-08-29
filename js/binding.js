@@ -1,28 +1,26 @@
 /**
  * A simple library for data-binding based on Object.observe()
+ *
+ * Usage Examples
+ *
+ *
+ * Opt-into one-way data binding in your app (for your instance of Core)
+ *
+ * ```javascript
+ * Binding.watchObject(App);
+ * ```
+ *
+ * Bind a function to a change event on App.data.previousRouteUnloadFunction
+ *
+ * ```javascript
+ * App.bind('previousRouteUnloadFunction', function (newValue) {
+         console.log(newValue);
+       });
+ * ```
+ *
  */
 
 (function () {
-
-    /**
-     * Usage Examples
-     *
-     *
-     * Opt-into one-way data binding in your app (for your instance of Core)
-     *
-     * ```javascript
-     * Binding.watchObject(App);
-     * ```
-     *
-     * Bind a function to a change event on App.data.previousRouteUnloadFunction
-     *
-     * ```javascript
-     * App.bind('previousRouteUnloadFunction', function (newValue) {
-         console.log(newValue);
-       });
-     * ```
-     *
-     */
 
     var Binding = window.Binding = new Core();
 
@@ -52,6 +50,7 @@
             });
         });
     });
+
 
     /**
      * Watch for changes on this object by default

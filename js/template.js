@@ -1,5 +1,15 @@
 /**
  * Templating Micro-library
+ *
+ * Usage Examples
+ *
+ *
+ * Compile a template
+ *
+ * ```javascript
+ * Template.compileTemplate(objectContainingUncompiledHTML);
+ * ```
+ *
  */
 
 (function () {
@@ -12,6 +22,7 @@
     }
 
     Template.registerGlobal('templates', {});
+
 
     /**
      * Concise template compilation
@@ -45,7 +56,10 @@
         return new Function(code.replace(/[\r\t\n]/g, '')).apply(options);
     });
 
-    // By default, Register a route for each template
+
+    /**
+     * Register a route for each template by default
+     */
     $('template[data-pathname]').each(function () {
         //var template = this.content; // Should work with proper implementation of component syntax, but it doesn't. :(
         var template = $(this).html();

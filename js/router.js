@@ -1,5 +1,28 @@
 /**
  * A Javascript Router based on the HTML5 history API
+ *
+ *
+ * Usage Examples
+ *
+ *
+ * Register a route with custom transition execution functions
+ *
+ * ```javascript
+ * Router.registerRoute('foo/bar/baz', {
+     *   loadRoute: function () {
+     *      $('#fooBarBaz').fadeIn();
+     *   },
+     *   unloadRoute: function () {
+     *      $('#fooBarBaz').fadeOut();
+     *   }
+     * });
+ * ```
+ *
+ * Transition to a named route
+ *
+ * ```javascript
+ * Router.routeTo('foo/bar/baz');
+ * ```
  */
 
 (function () {
@@ -24,7 +47,6 @@
         // Create an object path to routeParts
         return Utils.deepSetValue('Router.routes', routeParts, options);
     });
-
 
 
     /**
@@ -66,6 +88,7 @@
         window.history.back();
     });
 
+
     /**
      * Go Forward
      */
@@ -74,6 +97,9 @@
     });
 
 
+    /**
+     * Route to the current Hash
+     */
     Router.registerGlobal('routeToCurrentHash', function (preserveState) {
         var currentRoute = window.location.hash;
         if (currentRoute.indexOf('#') === 0) currentRoute = currentRoute.slice(1);
@@ -112,7 +138,9 @@
             }
         });
 
-        // Load the initial route (from URL)
+        /**
+         * Load the initial route (from URL) by default
+         */
         Router.routeToCurrentHash();
 
     });

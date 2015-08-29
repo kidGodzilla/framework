@@ -1,5 +1,5 @@
 /**
- * Our "Framework" Application
+ * Our "Framework" Example Application
  */
 
 (function () {
