@@ -15,7 +15,7 @@ var Binding = new Core();
         Object.observe(Binding.data, function (changes) {
             changes.forEach(function (change) {
                 var name = change.name;
-                var object = change.object;
+                // var object = change.object;
                 var newValue = change.object[name];
 
                 var boundFunction = App.bindings[name] || null;
