@@ -65,7 +65,7 @@
             <h2><a id="user-content-plug" class="anchor" href="#plug" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plug</h2>
 
             <p>If you enjoyed this, please take a look at our project, <a href="http://featurekit.co">featurekit</a>. It's the simplest way to share updates with your users &amp; gain valuable feedback to improve your product. Even better, it's free.</p>
-            
+
             <br><br>
 
             <h4><a id="user-content-model" class="anchor" href="#model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Model</h4>
@@ -301,12 +301,17 @@ $(<span class="pl-s"><span class="pl-pds">'</span>body<span class="pl-pds">'</sp
 <script src="js/core.js"></script>
 <script src="js/loader.js"></script>
 <script>
+    // Dependencies
     Loader.loadScript('js/object.observe.min.js');
     Loader.loadScript('js/md5.js');
+
+    // The "Framework"
     Loader.loadScript('js/utils.js');
     Loader.loadScript('js/router.js');
     Loader.loadScript('js/template.js');
     Loader.loadScript('js/binding.js');
+
+    // This contains our application
     Loader.loadScript('js/app.js');
 </script>
 </body>

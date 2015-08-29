@@ -1,9 +1,11 @@
 /**
  * A centralized location for generic application utilities
  */
-var Utils = new Core();
 
 (function () {
+
+    var Utils = window.Utils = new Core();
+
     /**
      * Safely return a deeply-nested object which may or may not exist at any depth
      *

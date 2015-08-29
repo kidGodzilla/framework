@@ -1,17 +1,34 @@
 /**
- * Our "Framework" Application
+ * Our "Framework" Example Application
  */
-var App = new Core();
 
 (function () {
+
+    var App = window.App = new Core();
+
+    /**
+     * Opt into one-way binding on this object's datastore
+     */
+    Binding.watchObject(App);
+
+
+    /**********************************************************************************
+     * Simple data-binding demo (because all of the other frameworks are doing it)
+     **********************************************************************************/
+
     App.registerGlobal('updateBoundData', function () {
         var val = $('#input2').val();
-        Binding.set('input', val);
+        App.set('input', val);
     });
 
-    Binding.bind('input', function (newValue) {
+    App.bind('input', function (newValue) {
         $('#foo').html(newValue);
     });
+
+
+    /**********************************************************************************
+     * Advanced (data-backed) template example
+     **********************************************************************************/
 
     App.set('templatePageTitle', 'Advanced Template Demo');
     App.set('items', {
@@ -20,10 +37,15 @@ var App = new Core();
         c: "baz"
     });
 
-    App.registerGlobal('updateGravatar', function() {
+
+    /**********************************************************************************
+     * Gravatar example
+     **********************************************************************************/
+
+    App.registerGlobal('updateGravatar', function () {
         var email = $('#input3').val();
 
-        var gravatar = 'http://www.gravatar.com/avatar/' + md5(email) + '?s=200';
+        var gravatar = 'http://www.gravatar.com/avatar/' + Utils.md5(email) + '?s=200';
         $('#gravatar').attr('src', gravatar);
     });
 
@@ -31,4 +53,5 @@ var App = new Core();
         App.set('githubData', data);
         // console.log(data); // data[1].actor.login, data[1].type, data[1].created_at
     });
+
 })();
