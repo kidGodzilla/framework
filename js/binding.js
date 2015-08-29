@@ -1,9 +1,10 @@
 /**
  * A simple library for data-binding based on Object.observe()
  */
-var Binding = new Core();
 
 (function () {
+
+    var Binding = window.Binding = new Core();
 
     Binding.registerGlobal('bindings', {});
 

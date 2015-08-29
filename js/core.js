@@ -4,22 +4,25 @@
 
 'use strict';
 
-function needsNew() {
+/**
+ * Used to throw an error upon direct execution
+ */
+function needsNew () {
     throw new TypeError("Failed to construct: Please use the 'new' operator, this object constructor cannot be called as a function.");
 }
 
 /**
  * a Generic core object
  */
-var Core = (function () {
+var Core = (function Core () {
 
     var constructor = this;
 
     /**
      * Prevent direct execution
      */
-    //if (!(this instanceof Core))
-    //    needsNew();
+    if (this instanceof Core)
+        needsNew();
 
     /**
      * datastore getter

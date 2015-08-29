@@ -1,9 +1,10 @@
 /**
  * A Javascript Router based on the HTML5 history API
  */
-var Router = new Core();
 
 (function () {
+
+    var Router = window.Router = new Core();
 
     Router.registerGlobal('routes', {});
 

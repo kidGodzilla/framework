@@ -1,9 +1,11 @@
 /**
  * Our "Framework" Application
  */
-var App = new Core();
 
 (function () {
+
+    var App = window.App = new Core();
+
     App.registerGlobal('updateBoundData', function () {
         var val = $('#input2').val();
         Binding.set('input', val);
@@ -23,7 +25,7 @@ var App = new Core();
     App.registerGlobal('updateGravatar', function() {
         var email = $('#input3').val();
 
-        var gravatar = 'http://www.gravatar.com/avatar/' + md5(email) + '?s=200';
+        var gravatar = 'http://www.gravatar.com/avatar/' + Utils.md5(email) + '?s=200';
         $('#gravatar').attr('src', gravatar);
     });
 

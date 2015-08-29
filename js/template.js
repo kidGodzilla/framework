@@ -1,9 +1,10 @@
 /**
  * Templating Micro-library
  */
-var Template = new Core();
 
 (function () {
+
+    var Template = window.Template = new Core();
 
     function htmlDecode (value) {
         // return $('<div/>').html(value).html().replace(/&lt;/g, '<').replace(/&gt;/g, '>'); // Should be safer but causes problems evaluating certian expressions

@@ -2,9 +2,10 @@
  * LOAD-DEPENDENCIES.JS
  * A A naive dependency loader which loads scripts & stylesheets on page load.
  */
-var Loader = new Core();
 
 (function () {
+
+    var Loader = window.Loader = new Core();
 
     /**
      * Sets the protocol for loading scripts, when the option is available (useful for local development)
