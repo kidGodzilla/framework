@@ -11,6 +11,11 @@
      */
     Binding.watchObject(App);
 
+
+    /**********************************************************************************
+     * Simple data-binding demo (because all of the other frameworks are doing it)
+     **********************************************************************************/
+
     App.registerGlobal('updateBoundData', function () {
         var val = $('#input2').val();
         App.set('input', val);
@@ -20,6 +25,11 @@
         $('#foo').html(newValue);
     });
 
+
+    /**********************************************************************************
+     * Advanced (data-backed) template example
+     **********************************************************************************/
+
     App.set('templatePageTitle', 'Advanced Template Demo');
     App.set('items', {
         a: "foo",
@@ -27,7 +37,12 @@
         c: "baz"
     });
 
-    App.registerGlobal('updateGravatar', function() {
+
+    /**********************************************************************************
+     * Gravatar example
+     **********************************************************************************/
+
+    App.registerGlobal('updateGravatar', function () {
         var email = $('#input3').val();
 
         var gravatar = 'http://www.gravatar.com/avatar/' + Utils.md5(email) + '?s=200';
@@ -38,4 +53,5 @@
         App.set('githubData', data);
         // console.log(data); // data[1].actor.login, data[1].type, data[1].created_at
     });
+
 })();

@@ -4,6 +4,26 @@
 
 (function () {
 
+    /**
+     * Usage Examples
+     *
+     *
+     * Opt-into one-way data binding in your app (for your instance of Core)
+     *
+     * ```javascript
+     * Binding.watchObject(App);
+     * ```
+     *
+     * Bind a function to a change event on App.data.previousRouteUnloadFunction
+     *
+     * ```javascript
+     * App.bind('previousRouteUnloadFunction', function (newValue) {
+         console.log(newValue);
+       });
+     * ```
+     *
+     */
+
     var Binding = window.Binding = new Core();
 
     Binding.registerGlobal('bind', function (name, func) {
@@ -37,13 +57,5 @@
      * Watch for changes on this object by default
      */
     Binding.watchObject(Binding);
-
-
-    /**
-     * Example
-     */
-    //App.bind('previousRouteUnloadFunction', function (newValue) {
-    //    console.log(newValue);
-    //});
 
 })();
