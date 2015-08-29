@@ -6,25 +6,38 @@
 
     var Binding = window.Binding = new Core();
 
-    Binding.registerGlobal('bindings', {});
-
     Binding.registerGlobal('bind', function (name, func) {
         Binding.bindings[name] = func;
     });
 
-    $(document).ready(function () {
-        Object.observe(Binding.data, function (changes) {
-            changes.forEach(function (change) {
-                var name = change.name;
-                // var object = change.object;
-                var newValue = change.object[name];
 
-                var boundFunction = App.bindings[name] || null;
+    /**
+     * Watch an object for changes
+     */
+    Binding.registerGlobal('watchObject', function (object) {
+        object.registerGlobal('bindings', {});
+        object.registerGlobal('bind', Binding.bind);
 
-                if (boundFunction && typeof(boundFunction) === "function") return boundFunction(newValue);
+        $(document).ready(function () {
+            Object.observe(object.data, function (changes) {
+                changes.forEach(function (change) {
+                    var name = change.name;
+                    // var obj = change.object;
+                    var newValue = change.object[name];
+
+                    var boundFunction = App.bindings[name] || null;
+
+                    if (boundFunction && typeof(boundFunction) === "function") return boundFunction(newValue);
+                });
             });
         });
     });
+
+    /**
+     * Watch for changes on this object by default
+     */
+    Binding.watchObject(Binding);
+
 
     /**
      * Example

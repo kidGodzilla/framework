@@ -301,12 +301,17 @@ $(<span class="pl-s"><span class="pl-pds">'</span>body<span class="pl-pds">'</sp
 <script src="js/core.js"></script>
 <script src="js/loader.js"></script>
 <script>
+    // Dependencies
     Loader.loadScript('js/object.observe.min.js');
     Loader.loadScript('js/md5.js');
+
+    // The "Framework"
     Loader.loadScript('js/utils.js');
     Loader.loadScript('js/router.js');
     Loader.loadScript('js/template.js');
     Loader.loadScript('js/binding.js');
+
+    // This contains our application
     Loader.loadScript('js/app.js');
 </script>
 </body>

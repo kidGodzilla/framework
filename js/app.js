@@ -6,12 +6,17 @@
 
     var App = window.App = new Core();
 
+    /**
+     * Opt into one-way binding on this object's datastore
+     */
+    Binding.watchObject(App);
+
     App.registerGlobal('updateBoundData', function () {
         var val = $('#input2').val();
-        Binding.set('input', val);
+        App.set('input', val);
     });
 
-    Binding.bind('input', function (newValue) {
+    App.bind('input', function (newValue) {
         $('#foo').html(newValue);
     });
 
