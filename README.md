@@ -147,11 +147,8 @@ Alternatively, if you are coming from AngularJS & enjoy it's declarative syntax,
 ```
 See http://www.w3schools.com/jsref/dom_obj_event.asp for a longer list of DOM events.
 
-#### Utilities, Data Manipulation, Ajax, etc.
-Between lodash & jQuery, you should be fine.
 
-
-## Computed Properties
+#### Computed Properties
 
 Computed properties are a very useful pattern, popularized by EmberJS. Fortunately, they already exist in javascript:
 
@@ -167,6 +164,9 @@ var obj = {
 console.log(obj.fullname());
 ```
 
+
+#### Utilities, Data Manipulation, Ajax, etc.
+Between lodash & jQuery, you should be fine.
 
 ## Updates
 
