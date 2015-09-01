@@ -151,6 +151,17 @@ See http://www.w3schools.com/jsref/dom_obj_event.asp for a longer list of DOM ev
 Between lodash & jQuery, you should be fine.
 
 
+## Computed Properties
+
+Computed properties are a very useful pattern popularized by EmberJS. Fortunately, they exist in pure javascript:
+
+```javascript
+foo: function () {
+  return bar + baz;
+}
+```
+
+
 ## Updates
 
 #### September 1st, 2015
