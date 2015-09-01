@@ -165,7 +165,7 @@ console.log(obj.fullname());
 ```
 
 #### HTML Imports / Includes
-You can opt into HTML Imports by calling the following utility method from your app:
+You can opt-in to HTML Imports by calling the following utility method from your app:
 
 ```javascript
 Utils.HTMLIncludes();
