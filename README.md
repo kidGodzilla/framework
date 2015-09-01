@@ -156,8 +156,10 @@ Between lodash & jQuery, you should be fine.
 Computed properties are a very useful pattern popularized by EmberJS. Fortunately, they exist in pure javascript:
 
 ```javascript
+firstName: "John",
+lastName: "Doe,
 fullname: function () {
-  return firstName + " " + lastName;
+  return this.firstName + " " + this.lastName;
 }
 ```
 
