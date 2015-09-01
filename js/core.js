@@ -5,13 +5,6 @@
 'use strict';
 
 /**
- * Used to throw an error upon direct execution
- */
-function needsNew () {
-    throw new TypeError("Failed to construct: Please use the 'new' operator, this object constructor cannot be called as a function.");
-}
-
-/**
  * a Generic core object
  */
 var Core = (function Core () {
@@ -22,7 +15,7 @@ var Core = (function Core () {
      * Prevent direct execution
      */
     if (this instanceof Core)
-        needsNew();
+        throw new TypeError("Failed to construct: Please use the 'new' operator, this object constructor cannot be called as a function.");
 
     /**
      * datastore getter

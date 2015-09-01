@@ -31,6 +31,7 @@
                     <li><a href="#github">Remote Data</a></li>
                     <li><a href="#template">Advanced Template</a></li>
                     <li><a href="#foo/bar/baz">Nested Route</a></li>
+                    <li><a href="#components">Components</a></li>
                     <li><a href="#foo">Foo</a></li>
                     <li><a href="#bar">Bar</a></li>
                 </ul>
@@ -250,11 +251,11 @@ $(<span class="pl-s"><span class="pl-pds">'</span>body<span class="pl-pds">'</sp
 
 <template data-pathname="template">
     <div class="col-sm-6 col-sm-offset-3">
-        <h2><% App.data.templatePageTitle %></h2>
+        <h2><%= App.data.templatePageTitle %></h2>
 
         <ul>
             <% for (var index in App.data.items) { %>
-            <li><% App.data.items[index] %></li>
+            <li><%= App.data.items[index] %></li>
             <% } %>
         </ul>
     </div>
@@ -284,9 +285,9 @@ $(<span class="pl-s"><span class="pl-pds">'</span>body<span class="pl-pds">'</sp
             <div>
                 <% for (var index in App.data.githubData) { %>
                 <div width="100%">
-                    <div style="width:100px;display:inline-block"><% App.data.githubData[index].actor.login %></div>
-                    <div style="width:200px;display:inline-block"><% App.data.githubData[index].created_at %></div>
-                    <div style="display:inline-block"><% App.data.githubData[index].type %></div>
+                    <div style="width:100px;display:inline-block"><%= App.data.githubData[index].actor.login %></div>
+                    <div style="width:200px;display:inline-block"><%= App.data.githubData[index].created_at %></div>
+                    <div style="display:inline-block"><%= App.data.githubData[index].type %></div>
                 </div>
                 <% } %>
             </div>
@@ -298,21 +299,82 @@ $(<span class="pl-s"><span class="pl-pds">'</span>body<span class="pl-pds">'</sp
 
 </template>
 
+<template data-pathname="components">
+    <h3>Slidebox</h3>
+    <p class="description">
+        A container that allows animated transitions between content panes. Slide Box supports horizontal and vertical transitions.
+    </p>
+
+    <nav class="actions">
+        <button onclick="$('#slidebox_demo')[0].xtag.slidePrevious();"><- Previous Slide</button>
+        <button onclick="$('#slidebox_demo')[0].xtag.slideNext();">Next Slide -></button>
+        <button onclick="$('#slidebox_demo')[0].xtag.slideTo(2);">Slide To 3</button>
+        <button onclick="$('#slidebox_demo')[0]['data-orientation'] = $('#slidebox_demo')[0].getAttribute('data-orientation') == 'x' ? 'y' : 'x'">Toggle orientation</button>
+    </nav>
+
+    <br>
+
+    <div style="width: 320px;overflow: hidden;">
+        <x-slidebox id="slidebox_demo" data-orientation="x" style="width: 320px;overflow: hidden;">
+            <x-slides>
+                <x-slide><img src="assets/images/components/slidebox/birnimal-calendar.png" /></x-slide>
+                <x-slide><img src="assets/images/components/slidebox/birnimal-graph.png" /></x-slide>
+                <x-slide><img src="assets/images/components/slidebox/birnimal-detail.png" /></x-slide>
+                <x-slide><img src="assets/images/components/slidebox/birnimal-settings.png" /></x-slide>
+            </x-slides>
+        </x-slidebox>
+    </div>
+
+    <h3>Autosuggest</h3>
+
+    <p><em>This example uses data from the Rotten Tomatoes API, so try typing a movie name</em></p>
+
+    <p class="description">
+        An autosuggest input provides automated hints and completion of textual value based on keyboard input.
+    </p>
+
+    <x-autosuggest id="autosuggest_demo" data-padding="2" data-url="http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=v695ukwehrcb5q8kwkrgjmbd&page_limit=10&page=1"></x-autosuggest>
+
+    <script>
+        document.getElementById('autosuggest_demo').dataready = function(request){
+            if (!request.responseText) return this;
+            request.responseText.movies.forEach(function (movie) {
+                this.xtag.addSuggestion(movie.title, movie);
+            }, this);
+        };
+
+        document.addEventListener('beforerequest', function (event) {
+            var element = event.target;
+            if (element.tagName == 'X-AUTOSUGGEST') {
+                element.xtag.request.url = element.xtag.request.url + '&q=' + element.value;
+            }
+        });
+    </script>
+</template>
+
 <script src="js/core.js"></script>
 <script src="js/loader.js"></script>
 <script>
     // Dependencies
-    Loader.loadScript('js/object.observe.min.js');
-    Loader.loadScript('js/md5.js');
+    Loader.loadScript('js/object.observe.min.js'); // Object.observe polyfill for Binding support
+    Loader.loadScript('js/md5.js'); // For the gravatar example
+    Loader.loadScript('js/x-tag.js'); // Web Components polyfill
 
     // The "Framework"
     Loader.loadScript('js/utils.js');
     Loader.loadScript('js/router.js');
     Loader.loadScript('js/template.js');
     Loader.loadScript('js/binding.js');
+    Loader.loadScript('js/components.js');
 
     // This contains our application
     Loader.loadScript('js/app.js');
+
+    // Load our components
+    Loader.loadStylesheet('components/autosuggest/autosuggest.css');
+    Loader.loadScript('components/autosuggest/autosuggest.js');
+    Loader.loadStylesheet('components/slidebox/slidebox.css');
+    Loader.loadScript('components/slidebox/slidebox.js');
 </script>
 </body>
 </html>

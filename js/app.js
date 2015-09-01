@@ -1,6 +1,7 @@
 /**
  * Our "Framework" Example Application
  */
+'use strict';
 
 (function () {
 
@@ -53,5 +54,12 @@
         App.set('githubData', data);
         // console.log(data); // data[1].actor.login, data[1].type, data[1].created_at
     });
+
+
+    /**********************************************************************************
+     * Autosuggest example
+     **********************************************************************************/
+
+
 
 })();

@@ -9,6 +9,7 @@ However, their popularity has completely transformed the Javascript language, an
 
 To demonstrate this, I created a very small (~300 loc) "framework" called **Framework**. Ideally, you might learn something from it, or use it to gain insight into where the javascript language (and frameworks!) could move once new features like `Object.observe` are implemented. Thanks for looking!
 
+
 ## Plug
 
 If you enjoyed this, please take a look at our project, <a href="http://featurekit.co">featurekit</a>. It's the simplest way to share updates with your users & gain valuable feedback to improve your product. Even better, it's free.
@@ -73,12 +74,12 @@ Syntax for most things (conditionals, loops) tracks very closely to underscore.j
 ```html
 <template data-pathname="index">
   <% if (App.data.pageTitle) { %>
-    <h2><% App.data.pageTitle %></h2>
+    <h2><%= App.data.pageTitle %></h2>
   <% } %>
   
   <ul>
   <% for (var index in items) { %>
-    <% items[index] %>
+    <%= items[index] %>
   <% } %>
   </ul>
 </template>
@@ -148,3 +149,21 @@ See http://www.w3schools.com/jsref/dom_obj_event.asp for a longer list of DOM ev
 
 #### Utilities, Data Manipulation, Ajax, etc.
 Between lodash & jQuery, you should be fine.
+
+
+## Updates
+
+#### September 1st, 2015
+- Templates are now compiled using a light wrapper for the lodash _.template function
+- Added a lightweight wrapper for the x-tag component library + examples
+
+#### August 29th, 2015
+- Code Cleanup
+
+#### August 27th, 2015
+- Initial release
+
+
+## Adding Features
+
+If you find something useful & would like to improve this repository, or think something's missing (maybe something you're used to in one of the major frameworks), please, open an issue or make a pull request.
