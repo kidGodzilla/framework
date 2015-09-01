@@ -24,6 +24,7 @@
  * Router.routeTo('foo/bar/baz');
  * ```
  */
+'use strict';
 
 (function () {
 

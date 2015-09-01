@@ -1,6 +1,7 @@
 /**
  * A centralized location for generic application utilities
  */
+'use strict';
 
 (function () {
 

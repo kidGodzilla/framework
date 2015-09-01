@@ -74,12 +74,12 @@ Syntax for most things (conditionals, loops) tracks very closely to underscore.j
 ```html
 <template data-pathname="index">
   <% if (App.data.pageTitle) { %>
-    <h2><% App.data.pageTitle %></h2>
+    <h2><%= App.data.pageTitle %></h2>
   <% } %>
   
   <ul>
   <% for (var index in items) { %>
-    <% items[index] %>
+    <%= items[index] %>
   <% } %>
   </ul>
 </template>

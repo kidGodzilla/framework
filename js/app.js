@@ -1,6 +1,7 @@
 /**
  * Our "Framework" Example Application
  */
+'use strict';
 
 (function () {
 

@@ -11,14 +11,24 @@
  * ```
  *
  */
+'use strict';
 
 (function () {
 
     var Template = window.Template = new Core();
 
     function htmlDecode (value) {
-        // return $('<div/>').html(value).html().replace(/&lt;/g, '<').replace(/&gt;/g, '>'); // Should be safer but causes problems evaluating certian expressions
-        return value.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+        // Commented out because treating templates as HTML causes the browser to "fix" invalid
+        // text nodes (our templating). This case still is not optimal, since we now have no solution for
+        // embedding code examples, which utilize html entities.
+        // return $('<div/>').html(value).html().replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+
+        value = value.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+
+        // As a hack, here we could turn everything inside <pre> back into text nodes,
+        // but I don't think we want to do that just yet.
+
+        return value;
     }
 
     Template.registerGlobal('templates', {});
@@ -27,9 +37,19 @@
     /**
      * Concise template compilation
      *
-     * Loosely based on the lodash implementation
+     * An alternative implementation relying on lodash
      */
     Template.registerGlobal('compileTemplate', function (html, options) {
+        html = htmlDecode(html);
+        return _.template(html, window, options);
+    });
+
+    /**
+     * Concise template compilation
+     *
+     * Loosely based on the lodash implementation
+     */
+    Template.registerGlobal('compileTemplateWithoutLodash', function (html, options) {
 
         html = htmlDecode(html);
 

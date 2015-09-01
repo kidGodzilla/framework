@@ -2,6 +2,7 @@
  * LOAD-DEPENDENCIES.JS
  * A A naive dependency loader which loads scripts & stylesheets on page load.
  */
+'use strict';
 
 (function () {
 
