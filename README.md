@@ -9,6 +9,10 @@ However, their popularity has completely transformed the Javascript language, an
 
 To demonstrate this, I created a very small (~300 loc) "framework" called **Framework**. Ideally, you might learn something from it, or use it to gain insight into where the javascript language (and frameworks!) could move once new features like `Object.observe` are implemented. Thanks for looking!
 
+## Features
+
+If you find something useful & would like to improve this repository, or think something's missing (maybe something you're used to in one of the major frameworks), please, open an issue or make a pull request.
+
 ## Plug
 
 If you enjoyed this, please take a look at our project, <a href="http://featurekit.co">featurekit</a>. It's the simplest way to share updates with your users & gain valuable feedback to improve your product. Even better, it's free.
