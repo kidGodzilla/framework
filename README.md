@@ -147,9 +147,35 @@ Alternatively, if you are coming from AngularJS & enjoy it's declarative syntax,
 ```
 See http://www.w3schools.com/jsref/dom_obj_event.asp for a longer list of DOM events.
 
+
+#### Computed Properties
+
+Computed properties are a very useful pattern, popularized by EmberJS. Fortunately, they already exist in javascript:
+
+```javascript
+var obj = {
+  firstName: "John",
+  lastName: "Doe",
+  fullname: function () {
+    return this.firstName + " " + this.lastName;
+  }
+};
+
+console.log(obj.fullname());
+```
+
+#### HTML Imports / Includes
+You can opt-in to HTML Imports by calling the following utility method from your app:
+
+```javascript
+Utils.HTMLIncludes();
+```
+
+This will use ajax to load HTML into the content of any element with the `[data-source-url]` attribute. Note that CORS applies, but in most situations, it should not be an issue if you're using local pathnames.
+Also, it will replace the content of a section with imported content, so the container should be empty.
+
 #### Utilities, Data Manipulation, Ajax, etc.
 Between lodash & jQuery, you should be fine.
-
 
 ## Updates
 
