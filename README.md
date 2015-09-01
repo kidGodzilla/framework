@@ -164,6 +164,15 @@ var obj = {
 console.log(obj.fullname());
 ```
 
+#### HTML Imports / Includes
+You can opt into HTML Imports by calling the following utility method from your app:
+
+```javascript
+Utils.HTMLIncludes();
+```
+
+This will use ajax to load HTML into the content of any element with the `[data-source-url]` attribute. Note that CORS applies, but in most situations, it should not be an issue if you're using local pathnames.
+Also, it will replace the content of a section with imported content, so the container should be empty.
 
 #### Utilities, Data Manipulation, Ajax, etc.
 Between lodash & jQuery, you should be fine.
