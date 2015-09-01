@@ -151,6 +151,18 @@ See http://www.w3schools.com/jsref/dom_obj_event.asp for a longer list of DOM ev
 Between lodash & jQuery, you should be fine.
 
 
+## Updates
+
+#### September 1st, 2015
+Templates are now compiled using a light wrapper for the lodash _.template function
+
+#### August 29th, 2015
+Code Cleanup
+
+#### August 27th, 2015
+Initial release
+
+
 ## Adding Features
 
 If you find something useful & would like to improve this repository, or think something's missing (maybe something you're used to in one of the major frameworks), please, open an issue or make a pull request.
