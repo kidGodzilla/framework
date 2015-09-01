@@ -9,9 +9,6 @@ However, their popularity has completely transformed the Javascript language, an
 
 To demonstrate this, I created a very small (~300 loc) "framework" called **Framework**. Ideally, you might learn something from it, or use it to gain insight into where the javascript language (and frameworks!) could move once new features like `Object.observe` are implemented. Thanks for looking!
 
-## Features
-
-If you find something useful & would like to improve this repository, or think something's missing (maybe something you're used to in one of the major frameworks), please, open an issue or make a pull request.
 
 ## Plug
 
@@ -152,3 +149,8 @@ See http://www.w3schools.com/jsref/dom_obj_event.asp for a longer list of DOM ev
 
 #### Utilities, Data Manipulation, Ajax, etc.
 Between lodash & jQuery, you should be fine.
+
+
+## Adding Features
+
+If you find something useful & would like to improve this repository, or think something's missing (maybe something you're used to in one of the major frameworks), please, open an issue or make a pull request.
