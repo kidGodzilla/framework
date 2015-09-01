@@ -154,13 +154,14 @@ Between lodash & jQuery, you should be fine.
 ## Updates
 
 #### September 1st, 2015
-Templates are now compiled using a light wrapper for the lodash _.template function
+- Templates are now compiled using a light wrapper for the lodash _.template function
+- Added a lightweight wrapper for the x-tag component library + examples
 
 #### August 29th, 2015
-Code Cleanup
+- Code Cleanup
 
 #### August 27th, 2015
-Initial release
+- Initial release
 
 
 ## Adding Features

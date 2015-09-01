@@ -75,4 +75,49 @@
         return $('<div/>').html(input).text();
     });
 
+    /**
+     * Handle includes
+     */
+    Utils.registerGlobal('HTMLIncludes', function () {
+        $(document).ready(function () {
+            $('[data-source-url]').each(function () {
+                $(this).load($(this).attr('data-source-url'));
+            });
+        });
+    });
+
+    /**
+     * Enable 100ms polling which waits for a conditional function to return true
+     */
+    Utils.registerGlobal('onCondition', function (condition, callback) {
+        var s = setInterval(function () {
+
+            // Early return if our condition is not a function
+            if (!condition || !typeof(condition) === "function") {
+                clearInterval(s);
+                return false;
+            }
+
+            // Evaluate our condition. If true, perform callback & clear our interval, otherwise, do nothing.
+            if (condition()) {
+                if (callback && typeof(callback) === "function") callback();
+                clearInterval(s);
+            }
+
+        }, 100);
+    });
+
+    /**
+     * Ensure all elements have Ids
+     */
+    Utils.registerGlobal('assignIDsToElements', function (offset) {
+        var i = $('body').attr('data-id-offset') || 0;
+        $('body *').each(function () {
+            if (!$(this).attr('id') || $(this).attr('id') === "") {
+                $(this).attr('id', 'component-' + i++);
+                $('body').attr('data-id-offset', i);
+            }
+        });
+    });
+
 })();
