@@ -159,8 +159,36 @@ $(<span class="pl-s"><span class="pl-pds">'</span>body<span class="pl-pds">'</sp
 
         <p>See <a href="http://www.w3schools.com/jsref/dom_obj_event.asp">http://www.w3schools.com/jsref/dom_obj_event.asp</a> for a longer list of DOM events.</p>
 
+        <h4><a id="user-content-computed-properties" class="anchor" href="#computed-properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Computed Properties</h4>
+
+        <p>Computed properties are a very useful pattern, popularized by EmberJS. Fortunately, they already exist in javascript:</p>
+
+        <div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> obj <span class="pl-k">=</span> {
+  firstName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>John<span class="pl-pds">"</span></span>,
+  lastName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Doe<span class="pl-pds">"</span></span>,
+  <span class="pl-en">fullname</span><span class="pl-k">:</span> <span class="pl-k">function</span> () {
+    <span class="pl-k">return</span> <span class="pl-v">this</span>.firstName <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span> <span class="pl-pds">"</span></span> <span class="pl-k">+</span> <span class="pl-v">this</span>.lastName;
+  }
+};
+
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(obj.fullname());</pre></div>
+
+        <h4><a id="user-content-html-imports--includes" class="anchor" href="#html-imports--includes" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML Imports / Includes</h4>
+
+        <p>You can opt-in to HTML Imports by calling the following utility method from your app:</p>
+
+        <div class="highlight highlight-javascript"><pre>Utils.HTMLIncludes();</pre></div>
+
+        <p>This will use ajax to load HTML into the content of any element with the <code>[data-source-url]</code> attribute. Note that CORS applies, but in most situations, it should not be an issue if you're using local pathnames.
+            Also, it will replace the content of a section with imported content, so the container should be empty.</p>
+
+
         <h4><a id="user-content-utilities-data-manipulation-ajax-etc" class="anchor" href="#utilities-data-manipulation-ajax-etc" aria-hidden="true"><span class="octicon octicon-link"></span></a>Utilities, Data Manipulation, Ajax, etc.</h4>
 
         <p>Between lodash &amp; jQuery, you should be fine.</p>
+
+        <h2><a id="user-content-adding-features" class="anchor" href="#adding-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding Features</h2>
+
+        <p>If you find something useful &amp; would like to improve this repository, or think something's missing (maybe something you're used to in one of the major frameworks), please, open an issue or make a pull request.</p>
     </article>
 </div>
