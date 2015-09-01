@@ -157,7 +157,7 @@ Computed properties are a very useful pattern popularized by EmberJS. Fortunatel
 
 ```javascript
 firstName: "John",
-lastName: "Doe,
+lastName: "Doe",
 fullname: function () {
   return this.firstName + " " + this.lastName;
 }
