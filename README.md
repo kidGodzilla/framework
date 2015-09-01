@@ -121,7 +121,7 @@ var name = prompt('what is your name?');
 App.set('name', name);
 
 // Later
-alert('I remember your name! It's ' + App.get('name'));
+alert('I remember your name! It\'s ' + App.get('name'));
 ```
 
 #### Data Binding

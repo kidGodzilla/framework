@@ -1,7 +1,7 @@
 {
   "name": "framework framework",
-  "description": "Some totally unrelated things that might let you get away with not using a more complicated framework.",
-  "version": "0.2.1",
+  "description": "Some totally unrelated things that might let you get away with not using a more complicated client-side framework.",
+  "version": "0.2.2",
   "author": "James Futhey",
   "homepage": "http://kidgodzilla.github.io/framework/",
   "repository": {
