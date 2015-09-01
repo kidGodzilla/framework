@@ -153,7 +153,7 @@ Between lodash & jQuery, you should be fine.
 
 ## Computed Properties
 
-Computed properties are a very useful pattern popularized by EmberJS. Fortunately, they exist in pure javascript:
+Computed properties are a very useful pattern, popularized by EmberJS. Fortunately, they already exist in javascript:
 
 ```javascript
 var obj = {
