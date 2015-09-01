@@ -355,23 +355,23 @@ $(<span class="pl-s"><span class="pl-pds">'</span>body<span class="pl-pds">'</sp
     </script>
 </template>
 
-<script src="js/core.js"></script>
-<script src="js/loader.js"></script>
+<script src="framework/core.js"></script>
+<script src="framework/loader.js"></script>
 <script>
     // Dependencies
-    Loader.loadScript('js/object.observe.min.js'); // Object.observe polyfill for Binding support
-    Loader.loadScript('js/md5.js'); // For the gravatar example
-    Loader.loadScript('js/x-tag.js'); // Web Components polyfill
+    Loader.loadScript('dependencies/js/object.observe.min.js'); // Object.observe polyfill for Binding support
+    Loader.loadScript('dependencies/js/md5.js'); // For the gravatar example
+    Loader.loadScript('dependencies/js/x-tag.js'); // Web Components polyfill
 
     // The "Framework"
-    Loader.loadScript('js/utils.js');
-    Loader.loadScript('js/router.js');
-    Loader.loadScript('js/template.js');
-    Loader.loadScript('js/binding.js');
-    Loader.loadScript('js/components.js');
+    Loader.loadScript('framework/utils.js');
+    Loader.loadScript('framework/router.js');
+    Loader.loadScript('framework/template.js');
+    Loader.loadScript('framework/binding.js');
+    Loader.loadScript('framework/components.js');
 
     // This contains our application
-    Loader.loadScript('js/app.js');
+    Loader.loadScript('app.js');
 
     // Load our components
     Loader.loadStylesheet('components/autosuggest/autosuggest.css');
