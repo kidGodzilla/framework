@@ -7,23 +7,12 @@
 
     var App = window.App = new Core();
 
-    /**
-     * Opt into one-way binding on this object's datastore
-     */
-    Binding.watchObject(App);
-
-
     /**********************************************************************************
      * Simple data-binding demo (because all of the other frameworks are doing it)
      **********************************************************************************/
 
-    App.registerGlobal('updateBoundData', function () {
-        var val = $('#input2').val();
-        App.set('input', val);
-    });
-
     App.bind('input', function (newValue) {
-        $('#foo').html(newValue);
+        $('#outlet #outputBox').html(newValue);
     });
 
 
@@ -38,21 +27,28 @@
         c: "baz"
     });
 
+    App.registerGlobal('addItem', function () {
+        var newKey = (Math.random()*0xFFFFFF<<0).toString(16);
+        App.data.items[newKey] = $('input[name=newItem]').val();
+    });
+
 
     /**********************************************************************************
      * Gravatar example
      **********************************************************************************/
 
-    App.registerGlobal('updateGravatar', function () {
-        var email = $('#input3').val();
-
+    App.bind('gravatarEmail', function (email) {
         var gravatar = 'http://www.gravatar.com/avatar/' + Utils.md5(email) + '?s=200';
         $('#gravatar').attr('src', gravatar);
     });
 
+
+    /**********************************************************************************
+     * Data-backing example
+     **********************************************************************************/
+
     $.get('https://api.github.com/repos/kidGodzilla/framework/events', function (data) {
         App.set('githubData', data);
-        // console.log(data); // data[1].actor.login, data[1].type, data[1].created_at
     });
 
 
@@ -60,6 +56,8 @@
      * Loads external resources via AJAX
      **********************************************************************************/
     Utils.HTMLIncludes();
+
+
 
 
 })();

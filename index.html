@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Test</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.4/sandstone/bootstrap.min.css"/>
     <style>
         body {
             padding-top: 50px;
@@ -26,17 +27,15 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="#dataBindingExample">Data Binding</a></li>
+                    <li><a href="#databinding">Data Binding</a></li>
                     <li><a href="#gravatar">Gravatar</a></li>
                     <li><a href="#github">Remote Data</a></li>
                     <li><a href="#template">Advanced Template</a></li>
                     <li><a href="#foo/bar/baz">Nested Route</a></li>
                     <li><a href="#components">Components</a></li>
-                    <!--<li><a href="#foo">Foo</a></li>-->
-                    <!--<li><a href="#bar">Bar</a></li>-->
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="https://github.com/kidGodzilla/framework" style="font-size:200%"><i class="fa fa-github"></i></a></li>
+                    <li><a href="https://github.com/kidGodzilla/framework"><i class="fa fa-github" style="font-size: 200%;position: absolute;right:10px"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -58,7 +57,7 @@
         <h1>"Framework" Example Application Demo</h1>
         <a href="#foo">Foo Route</a> |
         <a href="#bar">Bar Route</a> |
-        <a class="" href="#dataBindingExample">Data Binding Example</a> |
+        <a class="" href="#databinding">Data Binding Example</a> |
         <a class="" href="#gravatar">Gravatar Example</a>    |
         <a class="" href="#github">Remote Data Example</a> |
         <a class="" href="#template">Advanced Template Example</a>   |
@@ -75,30 +74,35 @@
     <h2 class="text-center">Bar!</h2>
 </template>
 
-<template data-pathname="dataBindingExample">
+<template data-pathname="databinding">
     <div class="text-center">
         <h2>Data Binding Example</h2>
-        <input type="text" id="input2" onkeyup="App.updateBoundData()" placeholder="Start typing here..">
-        <h3 id="foo"></h3>
+        <input type="text" id="input2" data-bindto="input" placeholder="Start typing here..">
+        <h3 id="outputBox"></h3>
     </div>
 </template>
 
 <template data-pathname="foo/bar/baz">
     <h2 class="text-center">/foo/bar/baz!!1</h2>
-    <p>
+    <p class="text-center">
         Nested routes are simple in "Framework". Framework matches the closest route path .
     </p>
 </template>
 
-<template data-pathname="template">
-    <div class="col-sm-6 col-sm-offset-3">
-        <h2><%= App.data.templatePageTitle %></h2>
+<template data-pathname="template" data-model="items">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <h2><%= App.data.templatePageTitle %></h2>
 
-        <ul>
-            <% for (var index in App.data.items) { %>
-            <li><%= App.data.items[index] %></li>
-            <% } %>
-        </ul>
+            <ul>
+                <% for (var index in App.data.items) { %>
+                <li><%= App.data.items[index] %></li>
+                <% } %>
+            </ul>
+            <br>
+            <input type="text" name="newItem">
+            <button onclick="App.addItem()">Add Item</button>
+        </div>
     </div>
 </template>
 
@@ -107,7 +111,7 @@
         <h2>Gravatar Example</h2>
         <hr>
 
-        <input type="text" id="input3" onkeyup="App.updateGravatar()" placeholder="Enter your email here..">
+        <input type="text" id="input3" data-bindto="gravatarEmail" placeholder="Enter your email here..">
         <br><br>
         <img id="gravatar" alt="">
         <br><hr>
@@ -141,6 +145,14 @@
 </template>
 
 <template data-pathname="components">
+    <h2>Component Examples</h2>
+
+    <p>
+        Web Components are supported by the <code>x-tag.js</code> polyfill. A lightweight wrapper has been created to make registering methods a bit easier. Look for more development in this area soon!
+    </p>
+
+    <br>
+
     <h3>Slidebox</h3>
     <p class="description">
         A container that allows animated transitions between content panes. Slide Box supports horizontal and vertical transitions.
@@ -165,6 +177,8 @@
             </x-slides>
         </x-slidebox>
     </div>
+
+    <br>
 
     <h3>Autosuggest</h3>
 
@@ -193,6 +207,9 @@
     </script>
 </template>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 <script src="framework/core.js"></script>
 <script src="framework/loader.js"></script>
 <script>
@@ -204,8 +221,8 @@
     // The "Framework"
     Loader.loadScript('framework/utils.js');
     Loader.loadScript('framework/router.js');
-    Loader.loadScript('framework/template.js');
     Loader.loadScript('framework/binding.js');
+    Loader.loadScript('framework/template.js');
     Loader.loadScript('framework/components.js');
 
     // This contains our application

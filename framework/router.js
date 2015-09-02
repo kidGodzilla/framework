@@ -31,6 +31,7 @@
     var Router = window.Router = new Core();
 
     Router.registerGlobal('routes', {});
+    Router.registerGlobal('currentRoute');
 
 
     /**
@@ -59,6 +60,8 @@
 
         // Translate nullstring -> "index" route
         if (path === "") path = "index";
+
+        Router.currentRoute = path;
 
         var routeParts = path.split('/');
 
@@ -98,12 +101,18 @@
     });
 
 
+    Router.registerGlobal('getCurrentRoute', function () {
+        var currentRoute = window.location.hash;
+        if (currentRoute.indexOf('#') === 0) currentRoute = currentRoute.slice(1);
+        return currentRoute;
+    });
+
+
     /**
      * Route to the current Hash
      */
     Router.registerGlobal('routeToCurrentHash', function (preserveState) {
-        var currentRoute = window.location.hash;
-        if (currentRoute.indexOf('#') === 0) currentRoute = currentRoute.slice(1);
+        var currentRoute = Router.getCurrentRoute();
         Router.routeTo(currentRoute, preserveState);
     });
 

@@ -1,0 +1,40 @@
+{
+  "name": "framework framework",
+  "description": "Some totally unrelated things that might let you get away with not using a more complicated client-side framework.",
+  "version": "0.2.2",
+  "author": "James Futhey",
+  "homepage": "http://kidgodzilla.github.io/framework/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kidGodzilla/framework.git"
+  },
+  "license": "MIT",
+  "ignore": [
+    "2",
+    "api",
+    "assets",
+    "bower_components",
+    "custom",
+    "default",
+    "global",
+    "help",
+    "tests",
+    "_config.yml",
+    ".gitignore",
+    ".travis.yml",
+    "CNAME",
+    "composer.json",
+    "favicon.ico",
+    "Gemfile",
+    "Gruntfile.js",
+    "index.html",
+    "package.json",
+    "*/index.html"
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {
+    "html5shiv": "~3.7.0",
+    "respond": "~1.4.2"
+  }
+}

@@ -9,6 +9,12 @@ However, their popularity has completely transformed the Javascript language, an
 
 To demonstrate this, I created a very small (~300 loc) "framework" called **Framework**. Ideally, you might learn something from it, or use it to gain insight into where the javascript language (and frameworks!) could move once new features like `Object.observe` are implemented. Thanks for looking!
 
+## NPM
+
+Getting started with NPM is easy. Simply:
+
+`npm install framework-framework --save-dev`
+
 
 ## Plug
 
@@ -115,7 +121,7 @@ var name = prompt('what is your name?');
 App.set('name', name);
 
 // Later
-alert('I remember your name! It's ' + App.get('name'));
+alert('I remember your name! It\'s ' + App.get('name'));
 ```
 
 #### Data Binding
@@ -178,6 +184,9 @@ Also, it will replace the content of a section with imported content, so the con
 Between lodash & jQuery, you should be fine.
 
 ## Updates
+
+#### September 2nd, 2015
+- Added automatic, declarative data binding syntax for inputs and templates similar to other frameworks
 
 #### September 1st, 2015
 - Templates are now compiled using a light wrapper for the lodash _.template function
