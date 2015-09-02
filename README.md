@@ -185,6 +185,9 @@ Between lodash & jQuery, you should be fine.
 
 ## Updates
 
+#### September 2nd, 2015
+- Added automatic, declarative data binding syntax for inputs and templates similar to other frameworks
+
 #### September 1st, 2015
 - Templates are now compiled using a light wrapper for the lodash _.template function
 - Added a lightweight wrapper for the x-tag component library + examples

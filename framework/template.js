@@ -78,19 +78,62 @@
 
 
     /**
+     * Watch for changes to an object and re-render a template
+     */
+    Template.registerGlobal('watch', function () {
+
+    });
+
+
+    /**
      * Register a route for each template by default
      */
     $('template[data-pathname]').each(function () {
-        //var template = this.content; // Should work with proper implementation of component syntax, but it doesn't. :(
+        // var template = this.content; // Should work with proper implementation of component syntax, but it doesn't. :(
         var template = $(this).html();
         var name = $(this).attr('data-pathname');
 
         Template.templates[name] = template;
 
+        // If template[data-model], watch model for changes & "magically" re-render the template
+        var model = $(this).attr('data-model');
+        if (model) {
+            $(document).ready(function () {
+                App.bind(model, function () {
+                    var currentRoute = Router.getCurrentRoute();
+                    if (currentRoute === name) Router.routeTo('template');
+                });
+
+                // Iterate through each child-key and create bindings (if applicable)
+                for (var key in App.data[model]) {
+                    Binding.bind(model[key], function () {
+                        var currentRoute = Router.getCurrentRoute();
+                        if (currentRoute === name) Router.routeTo('template');
+                    });
+                }
+
+            });
+        }
+
+        Template.registerGlobal('createInputBindings', function () {
+            var $boundInputs = $('#outlet').find('[data-bindto]');
+            if ($boundInputs.length) {
+                // Bind each input with [data-bindto] to App.data[data-bindto] = $(this).val()
+                $boundInputs.each(function () {
+                    var bindTo = $(this).attr('data-bindto');
+                    $(this).on('keyup paste change input', function () {
+                        var $thisVal = $(this).val();
+                        App.set(bindTo, $thisVal);
+                    });
+                });
+            }
+        });
+
         Router.registerRoute(name, {
             loadRoute: function () {
                 var $outlet = $('#outlet').length ? $('#outlet').first() : $('body');
                 $outlet.html(Template.compileTemplate(App.templates[name]));
+                Template.createInputBindings();
             },
             unloadRoute: function () {
                 var $outlet = $('#outlet').length ? $('#outlet').first() : $('body');

@@ -25,37 +25,29 @@
 
     var Binding = window.Binding = new Core();
 
-    Binding.registerGlobal('bind', function (name, func) {
-        Binding.bindings[name] = func;
-    });
+    Binding.registerGlobal('bindings', {});
 
-
-    /**
-     * Watch an object for changes
-     */
-    Binding.registerGlobal('watchObject', function (object) {
-        object.registerGlobal('bindings', {});
-        object.registerGlobal('bind', Binding.bind);
+    Binding.registerGlobal('bind', function (valueName, func) {
+        Binding.bindings[valueName] = func;
 
         $(document).ready(function () {
-            Object.observe(object.data, function (changes) {
+            var obj = App.data[valueName];
+
+            // Either watch the parent or App.data if the bound value is invalid
+            if (!App.data[valueName] || typeof(App.data[valueName]) !== "object") obj = App.data;
+            Object.observe(obj, function (changes) {
                 changes.forEach(function (change) {
                     var name = change.name;
                     // var obj = change.object;
-                    var newValue = change.object[name];
+                    // var newValue = change.object[name];
+                    // var boundFunction = Binding.bindings[name] || null;
 
-                    var boundFunction = App.bindings[name] || null;
+                    var result = App.data[valueName]; // Return the value we actually wanted, not it's parent object
 
-                    if (boundFunction && typeof(boundFunction) === "function") return boundFunction(newValue);
+                    if (func && typeof(func) === "function") return func(result);
                 });
             });
         });
     });
-
-
-    /**
-     * Watch for changes on this object by default
-     */
-    Binding.watchObject(Binding);
 
 })();
