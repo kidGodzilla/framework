@@ -82,7 +82,7 @@
          * Lodash (v3.5.0 compat)
          * A high-performance utility library
          */
-        if (!window._) loadScript(protocol + "cdn.jsdelivr.net/lodash/3.5.0/lodash.compat.min.js");
+        if (!window._) loadScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.2/lodash.min.js");
 
 
         /**

@@ -38,6 +38,7 @@
      **********************************************************************************/
 
     App.bind('gravatarEmail', function (email) {
+        if (!email) return;
         var gravatar = 'http://www.gravatar.com/avatar/' + Utils.md5(email) + '?s=200';
         $('#gravatar').attr('src', gravatar);
     });
