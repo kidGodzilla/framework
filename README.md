@@ -16,10 +16,6 @@ Getting started with NPM is easy. Simply:
 `npm install framework-framework --save-dev`
 
 
-## Plug
-
-If you enjoyed this, please take a look at our project, <a href="http://featurekit.co">featurekit</a>. It's the simplest way to share updates with your users & gain valuable feedback to improve your product. Even better, it's free.
-
 ## Demo
 
 http://kidgodzilla.github.io/framework/
